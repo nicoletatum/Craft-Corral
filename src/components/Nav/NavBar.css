@@ -1,0 +1,23 @@
+.title{
+    display: flex;
+    justify-content: center;
+}
+.subHead{
+    display: flex;
+    flex-wrap:nowrap;
+    justify-content: center;
+}
+
+.navbar {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+
+.navbar__item {
+    flex-basis: 20%;
+    list-style-type: none;
+}
+/* body{
+    border-bottom: solid rgb(0, 0, 0);
+} */
