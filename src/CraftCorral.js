@@ -1,7 +1,10 @@
 import { Route, Redirect } from "react-router-dom"
+import { NavBar } from "./components/Nav/NavBar.js"
+import { ApplicationViews } from "./components/ApplicationViews.js"
 import { Login } from "./components/auth/Login"
 import { Register } from "./components/auth/Register"
 import { userStorageKey } from "./components/auth/authSettings"
+import "../src/CraftCorral.css"
 
 export const CraftCorral = () => (
     <>
@@ -9,7 +12,8 @@ export const CraftCorral = () => (
             if (sessionStorage.getItem(userStorageKey)) {
                 return (
                     <>
-                              //Components that are rendered when the user is authenticated go inside this React fragment
+                        <NavBar />
+                        <ApplicationViews />
                     </>
                 )
             } else {
