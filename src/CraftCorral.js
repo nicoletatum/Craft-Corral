@@ -1,7 +1,7 @@
 import { Route, Redirect } from "react-router-dom"
-import { Login } from "./auth/Login"
-import { Register } from "./auth/Register"
-import { userStorageKey } from "./auth/authSettings"
+import { Login } from "./components/auth/Login"
+import { Register } from "./components/auth/Register"
+import { userStorageKey } from "./components/auth/authSettings"
 
 export const CraftCorral = () => (
     <>
