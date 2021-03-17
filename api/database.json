@@ -22,7 +22,13 @@
     "users": [
         {
             "id": 1,
-            "name": "Nicole Tatum"
+            "name": "Nicole Tatum",
+            "email": "nicoletatum@outlook.com"
+        },
+        {
+            "email": "gregt@gmail.com",
+            "name": "greg testt",
+            "id": 2
         }
     ],
     "categories": [
@@ -116,56 +122,56 @@
         }
     ],
     "tools": [
-            {
-                "id": 1,
-                "name": "drill",
-                "userId": 1
-            },
-            {
-                "id": 2,
-                "name": "scroll saw",
-                "userId": 1
-            },
-            {
-                "id": 3,
-                "name": "jig saw",
-                "userId": 1
-            },
-            {
-                "id": 4,
-                "name": "rotary saw",
-                "userId": 1
-            },
-            {
-                "id": 5,
-                "name": "dremel",
-                "userId": 1
-            },
-            {
-                "id": 6,
-                "name": "blow torch",
-                "userId": 1
-            },
-            {
-                "id": 7,
-                "name": "clothes iron",
-                "userId": 1
-            },
-            {
-                "id": 8,
-                "name": "scissors",
-                "userId": 1
-            },
-            {
-                "id": 9,
-                "name": "marker",
-                "userId": 1
-            },
-            {
-                "id": 10,
-                "name": "sandpaper",
-                "userId": 1
-            }
+        {
+            "id": 1,
+            "name": "drill",
+            "userId": 1
+        },
+        {
+            "id": 2,
+            "name": "scroll saw",
+            "userId": 1
+        },
+        {
+            "id": 3,
+            "name": "jig saw",
+            "userId": 1
+        },
+        {
+            "id": 4,
+            "name": "rotary saw",
+            "userId": 1
+        },
+        {
+            "id": 5,
+            "name": "dremel",
+            "userId": 1
+        },
+        {
+            "id": 6,
+            "name": "blow torch",
+            "userId": 1
+        },
+        {
+            "id": 7,
+            "name": "clothes iron",
+            "userId": 1
+        },
+        {
+            "id": 8,
+            "name": "scissors",
+            "userId": 1
+        },
+        {
+            "id": 9,
+            "name": "marker",
+            "userId": 1
+        },
+        {
+            "id": 10,
+            "name": "sandpaper",
+            "userId": 1
+        }
     ],
     "projectsMaterials": [
         {
