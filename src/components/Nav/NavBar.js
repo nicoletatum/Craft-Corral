@@ -1,8 +1,11 @@
 import React from "react"
 import { Link } from "react-router-dom"
+// import { authApi, userStorageKey } from "../auth/authSettings"
 import "./NavBar.css"
 
 export const NavBar = (props) => {
+
+
     return (
         <>
             <div className="titleblock">
@@ -19,10 +22,12 @@ export const NavBar = (props) => {
                         <Link className="navbar__link" to="/addProject">Add Project</Link>
                     </li>
                     <li className="navbar__item">
-                        <Link className="navbar__link" to="/">Sign Out</Link>
+                        <Link className="navbar__link" onClick={e => sessionStorage.clear()} to="/">Sign Out</Link>
                     </li>
                 </ul>
             </div>
         </>
     )
 }
+
+// sessionStorage.clear()
