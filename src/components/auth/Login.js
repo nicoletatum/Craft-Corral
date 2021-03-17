@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { Link, useHistory } from "react-router-dom";
 import { authApi, userStorageKey } from "./authSettings"
 import "./Login.css"
+import Crusty from "./crusty.png"
 
 
 export const Login = () => {
@@ -38,6 +39,7 @@ export const Login = () => {
     }
 
     return (
+        <>
         <main className="container--login">
             <dialog className="dialog dialog--auth" open={existDialog}>
                 <div>User does not exist</div>
@@ -45,7 +47,7 @@ export const Login = () => {
             </dialog>
             <section>
                 <form className="form--login" onSubmit={handleLogin}>
-                    <h1>Nutshell</h1>
+                    <h1>Welcome To Crusty’s Craft Corral!</h1>
                     <h2>Please sign in</h2>
                     <fieldset>
                         <label htmlFor="inputEmail"> Email address </label>
@@ -67,7 +69,9 @@ export const Login = () => {
             <section className="link--register">
                 <Link to="/register">Register for an account</Link>
             </section>
+            <div><img src={Crusty} alt="crusty" className="crusty"></img></div>
         </main>
+        </>
     )
 }
 
