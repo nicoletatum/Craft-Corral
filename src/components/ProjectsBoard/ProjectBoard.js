@@ -7,13 +7,14 @@ import { userStorageKey } from "../auth/authSettings.js"
 export const ProjectBoard = () => {
     const { projects, getProjects } = useContext(ProjectContext)
 
-    // let currentUser = parseInt(sessionStorage.getItem(userStorageKey))
+    let currentUser = parseInt(sessionStorage.getItem(userStorageKey))
     
     useEffect(() => {
         getProjects()
     }, [])
-
-    // let userProjects = projects.filter(project => currentUser === project.userId)
+    
+    // debugger 
+    let userProjects = projects.filter(project => currentUser === project.userId)
     // const history = useHistory()
 
     return (
@@ -21,7 +22,7 @@ export const ProjectBoard = () => {
             <h3 className="projectHeader"> <p>projects</p> </h3>
             <div className="projects">
             {
-                projects.map(project => {
+                userProjects.map(project => {
                 return <ProjectCard key={project.id}
                             project={project} /> 
                 })

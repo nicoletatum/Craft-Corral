@@ -4,8 +4,8 @@
             "id": 1,
             "name": "Penguin Man",
             "description": "I work at 21c hotels and we have penguins we move around. I thought it would be funny to make one that turned into a person and put it in the employee stairwell.",
-            "userId": "1",
-            "categoryId": "1",
+            "userId": 1,
+            "categoryId": 1,
             "dateCreated": "01/01/2021",
             "dateDue": "05/01/2021"
         },
@@ -13,8 +13,8 @@
             "id": 2,
             "name": "Kiln",
             "description": "I got a kiln at an estate sale but i dont trust the wires. I need to rewire it",
-            "userId": "1",
-            "categoryId": "3",
+            "userId": 2,
+            "categoryId": 3,
             "dateCreated": "01/01/2021",
             "dateDue": "05/01/2021"
         }
