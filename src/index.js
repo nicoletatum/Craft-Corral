@@ -4,6 +4,7 @@ import './index.css';
 import { CraftCorral } from './CraftCorral.js';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from "react-router-dom";
+// import 'bootstrap/dist/css/bootstrap.min.css'
 
 ReactDOM.render(
   <React.StrictMode>

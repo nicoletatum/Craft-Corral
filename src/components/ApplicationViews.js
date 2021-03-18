@@ -17,7 +17,7 @@ export const ApplicationViews = () => {
                 <ProjectBoard  />
         </Route>
         <Route path="/projects/addProject">
-            < CreateProject/>
+            <CreateProject />
         </Route>
         </ProjectProvider>
         </>

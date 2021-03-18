@@ -2,6 +2,7 @@ import { useContext, useEffect } from "react"
 import { ProjectContext } from "./ProjectProvider.js"
 import { ProjectCard } from "./Project.js"
 import { userStorageKey } from "../auth/authSettings.js"
+import Button from 'react-bootstrap/Button';
 
 
 export const ProjectBoard = () => {
@@ -29,9 +30,9 @@ export const ProjectBoard = () => {
             }
             </div>
             <div className="projectButtonDiv">
-            <button className="addProjectButton">
+            <Button className="addProjectButton">
                     Add Project
-            </button>
+            </Button>
             </div>
         </>
     )
