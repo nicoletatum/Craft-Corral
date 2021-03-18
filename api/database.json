@@ -4,8 +4,8 @@
             "id": 1,
             "name": "Penguin Man",
             "description": "I work at 21c hotels and we have penguins we move around. I thought it would be funny to make one that turned into a person and put it in the employee stairwell.",
-            "userId": "1",
-            "categoryId": "1",
+            "userId": 1,
+            "categoryId": 1,
             "dateCreated": "01/01/2021",
             "dateDue": "05/01/2021"
         },
@@ -13,8 +13,8 @@
             "id": 2,
             "name": "Kiln",
             "description": "I got a kiln at an estate sale but i dont trust the wires. I need to rewire it",
-            "userId": "1",
-            "categoryId": "3",
+            "userId": 2,
+            "categoryId": 3,
             "dateCreated": "01/01/2021",
             "dateDue": "05/01/2021"
         }
@@ -22,7 +22,13 @@
     "users": [
         {
             "id": 1,
-            "name": "Nicole Tatum"
+            "name": "Nicole Tatum",
+            "email": "nicoletatum@outlook.com"
+        },
+        {
+            "email": "gregt@gmail.com",
+            "name": "greg testt",
+            "id": 2
         }
     ],
     "categories": [
@@ -116,56 +122,56 @@
         }
     ],
     "tools": [
-            {
-                "id": 1,
-                "name": "drill",
-                "userId": 1
-            },
-            {
-                "id": 2,
-                "name": "scroll saw",
-                "userId": 1
-            },
-            {
-                "id": 3,
-                "name": "jig saw",
-                "userId": 1
-            },
-            {
-                "id": 4,
-                "name": "rotary saw",
-                "userId": 1
-            },
-            {
-                "id": 5,
-                "name": "dremel",
-                "userId": 1
-            },
-            {
-                "id": 6,
-                "name": "blow torch",
-                "userId": 1
-            },
-            {
-                "id": 7,
-                "name": "clothes iron",
-                "userId": 1
-            },
-            {
-                "id": 8,
-                "name": "scissors",
-                "userId": 1
-            },
-            {
-                "id": 9,
-                "name": "marker",
-                "userId": 1
-            },
-            {
-                "id": 10,
-                "name": "sandpaper",
-                "userId": 1
-            }
+        {
+            "id": 1,
+            "name": "drill",
+            "userId": 1
+        },
+        {
+            "id": 2,
+            "name": "scroll saw",
+            "userId": 1
+        },
+        {
+            "id": 3,
+            "name": "jig saw",
+            "userId": 1
+        },
+        {
+            "id": 4,
+            "name": "rotary saw",
+            "userId": 1
+        },
+        {
+            "id": 5,
+            "name": "dremel",
+            "userId": 1
+        },
+        {
+            "id": 6,
+            "name": "blow torch",
+            "userId": 1
+        },
+        {
+            "id": 7,
+            "name": "clothes iron",
+            "userId": 1
+        },
+        {
+            "id": 8,
+            "name": "scissors",
+            "userId": 1
+        },
+        {
+            "id": 9,
+            "name": "marker",
+            "userId": 1
+        },
+        {
+            "id": 10,
+            "name": "sandpaper",
+            "userId": 1
+        }
     ],
     "projectsMaterials": [
         {

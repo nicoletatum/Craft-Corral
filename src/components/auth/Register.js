@@ -17,7 +17,7 @@ export const Register = () => {
     }
 
     const existingUserCheck = () => {
-        
+        debugger
         return fetch(`${authApi.localApiBaseUrl}/${authApi.endpoint}?email=${registerUser.email}`)
             .then(res => res.json())
             .then(user => !!user.length)

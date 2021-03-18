@@ -1,0 +1,16 @@
+.crusty{
+    display:flex;
+    max-width: 50%;
+    padding:1em;
+}
+.welcomeBox{
+    display:flex;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.158);
+    margin-top: 10%;
+}
+
+crustyText{
+    display: flex;
+    justify-content: right;
+}
