@@ -13,12 +13,10 @@
     display: flex;
     flex-wrap: nowrap;
     justify-content: center;
+    background-color:rgba(219, 169, 112, 0.719);
 }
-
-.navbar__item {
-    flex-basis: 20%;
-    list-style-type: none;
+.headBlock{
+    margin-bottom: 0;
+    padding-bottom:0;
+    padding-top:.5em;
 }
-/* body{
-    border-bottom: solid rgb(0, 0, 0);
-} */

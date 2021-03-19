@@ -1,0 +1,19 @@
+.projectsTitle{
+    padding-top:.5em;
+    padding-bottom:.5em;
+    text-align: center;
+}
+
+.projectForm{
+    margin:1% 15% 0% 15%;
+}
+
+.cantFind{
+    display:flex;
+    justify-content: flex-end;
+
+}
+
+.cantFindText{
+    margin-right:1em;
+}

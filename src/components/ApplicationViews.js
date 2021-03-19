@@ -3,7 +3,7 @@ import { Route } from "react-router-dom"
 import { Home } from "./Home/Home"
 import{ ProjectBoard } from "./ProjectsBoard/ProjectBoard"
 import { ProjectProvider } from "./ProjectsBoard/ProjectProvider"
-
+import { CreateProject } from "./ProjectsBoard/AddProject"
 export const ApplicationViews = () => {
     return (
         <>
@@ -11,9 +11,12 @@ export const ApplicationViews = () => {
         <Route exact path="/">
                 <Home />
         </Route>
-        < ProjectProvider>
+        <ProjectProvider>
         <Route exact path="/projects">
                 <ProjectBoard  />
+        </Route>
+        <Route path="/addProject">
+            <CreateProject />
         </Route>
         </ProjectProvider>
         </>
