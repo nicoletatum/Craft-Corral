@@ -3,7 +3,8 @@ import { ProjectContext } from "./ProjectProvider.js"
 import { ProjectCard } from "./Project.js"
 import { userStorageKey } from "../auth/authSettings.js"
 import Button from 'react-bootstrap/Button';
-
+import { CardDeck, Jumbotron } from "react-bootstrap";
+import "./ProjectBoard.css"
 
 export const ProjectBoard = () => {
     const { projects, getProjects } = useContext(ProjectContext)
@@ -20,20 +21,15 @@ export const ProjectBoard = () => {
 
     return (
         <>
-            <h3 className="projectHeader"> <p>projects</p> </h3>
-            <div className="projects">
+            <Jumbotron className="projectsTitle"> <h3>projects</h3> </Jumbotron>
+        <CardDeck>
             {
                 userProjects.map(project => {
-                return <ProjectCard key={project.id}
-                            project={project} /> 
+                    return <ProjectCard key={project.id}
+                    project={project} /> 
                 })
             }
-            </div>
-            <div className="projectButtonDiv">
-            <Button className="addProjectButton">
-                    Add Project
-            </Button>
-            </div>
+            </CardDeck>
         </>
     )
 }

@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react"
 import { useHistory } from 'react-router-dom';
 import { ProjectContext } from "./ProjectProvider"
 import { userStorageKey } from "../auth/authSettings"
+import { Form, FormLabel, Button } from "react-bootstrap";
 
 export const CreateProject = () => {
     let currentUser = parseInt(sessionStorage.getItem(userStorageKey))
@@ -37,15 +38,25 @@ export const CreateProject = () => {
 
     return(
         <>
-        <form className="ProjectCard">
-            <h3 id="projectName">{project.name}</h3>
-            <div className="projectDescription">{project.description}</div>
-            <div className="projectUser">{project.userId}</div>
-            <div className="projectcategory">{project.categoryId}</div>
-            <div className="projectCreationDate">{project.dateCreated}</div>
-            <div className="projectCompletionDate">Complete by: {project.dueDate}</div>
-            <button > edit </button>
-        </form>
+        <Form className="ProjectForm">
+            <Form.Group>
+                <Form.Label id="project.name"> Project Name: </Form.Label>
+                <Form.Control type="text" placeholder="Enter name of project" />
+            </Form.Group>
+            <Form.Group>
+                <Form.Label id="project.description"> Project Description: </Form.Label>
+                <Form.Control type="text" placeholder="Tell Crusty a bit about your project" />
+            </Form.Group>
+            <Form.Group>
+                <Form.Label id="project.categoryId"> Project Category: </Form.Label>
+                <Form.Control type="text" placeholder="Select Category " />
+            </Form.Group>
+            <Form.Group>
+                <Form.Label id="project.dateDue"> Date Due: </Form.Label>
+                <Form.Control type="text" placeholder="datepicker? for bootstrap" />
+            </Form.Group>
+            <Button> edit </Button>
+        </Form>
         </>
     )
 }
