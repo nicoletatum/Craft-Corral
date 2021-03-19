@@ -11,12 +11,11 @@ export const ApplicationViews = () => {
         <Route exact path="/">
                 <Home />
         </Route>
-        
         <ProjectProvider>
         <Route exact path="/projects">
                 <ProjectBoard  />
         </Route>
-        <Route path="/projects/addProject">
+        <Route path="/addProject">
             <CreateProject />
         </Route>
         </ProjectProvider>

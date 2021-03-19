@@ -18,8 +18,8 @@ export const NavBar = (props) => {
                 <Nav>
                     <Nav.Link  href="/"> Home </Nav.Link> 
                     <Nav.Link  href="/projects">Projects</Nav.Link>
-                    <Nav.Link  href="projects/addProject">Add Project</Nav.Link>
-                    <Nav.Link  onClick={e => sessionStorage.clear()} to="/">Sign Out</Nav.Link>    
+                    <Nav.Link  href="/addProject">Add Project</Nav.Link>
+                    <Nav.Link  onClick={e => sessionStorage.clear()} href="/">Sign Out</Nav.Link>    
                 </Nav>
             </Navbar>
         </Jumbotron>
