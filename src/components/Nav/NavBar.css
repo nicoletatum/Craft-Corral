@@ -7,18 +7,15 @@
     flex-wrap:nowrap;
     justify-content: center;
 }
-/* 
+
 .navbar {
     padding-bottom: 2%;
     display: flex;
     flex-wrap: nowrap;
     justify-content: center;
-} */
-/* 
-.navbar__item {
-    flex-basis: 20%;
-    list-style-type: none;
-} */
-/* body{
-    border-bottom: solid rgb(0, 0, 0);
-} */
+}
+.headBlock{
+    margin-bottom: 0;
+    padding-bottom:0;
+    padding-top:.5em;
+}
