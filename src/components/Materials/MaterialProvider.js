@@ -18,6 +18,8 @@ export const MaterialProvider = (props) => {
     //         .then(res => res.json())
     // }
 
+    //addprojectmaterial. to add all of the materials to project materials 
+
     const addMaterial = materialObj => {
         return fetch("http://localhost:8088/materials",{
         method: "POST",

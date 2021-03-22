@@ -22,6 +22,11 @@ export const ProjectBoard = () => {
     return (
         <>
             <Jumbotron className="projectsTitle"> <h3>projects</h3> </Jumbotron>
+            <div className="sortButtons">
+                <p>Sort projects by: </p>
+            <Button>Category</Button>
+            <Button>Date Created(date due?)</Button>
+            </div>
         <CardDeck>
             {
                 userProjects.map(project => {

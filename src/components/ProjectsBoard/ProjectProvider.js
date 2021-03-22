@@ -22,6 +22,13 @@ export const ProjectProvider = (props) => {
         .then(setCategories)
     }
 
+    const deleteProject = (projectId) => {
+        return fetch(`http://localhost:8088/projects/${projectId}`, {
+            method: "DELETE"
+        })
+            .then(getProjects)
+    }
+
     // const getProjectlById = (id) => {
     //     return fetch(`http://localhost:8088/projects/${id}`)
     //         .then(res => res.json())
@@ -42,7 +49,7 @@ export const ProjectProvider = (props) => {
     //can access items in children of "props" whatever
     return (
         <ProjectContext.Provider value={{
-            projects, getProjects, addProject, getCategories, categories
+            projects, getProjects, addProject, getCategories, categories, deleteProject
         }}>
             {props.children}
         </ProjectContext.Provider>

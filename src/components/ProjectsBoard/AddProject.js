@@ -5,6 +5,7 @@ import { userStorageKey } from "../auth/authSettings"
 import { ToolContext } from "../Tools/ToolProvider"
 import { MaterialContext } from "../Materials/MaterialProvider"
 import { Form, FormLabel, Button, Jumbotron, Modal } from "react-bootstrap";
+import { Multiselect } from 'multiselect-react-dropdown'
 import "./ProjectBoard.css"
 
 export const CreateProject = () => {
@@ -54,8 +55,8 @@ export const CreateProject = () => {
     //"lifecycle" of component. (helps run and get data for variable)
     useEffect(() => {
         getTools()
-        .then(getMaterials())
-        .then(getCategories())
+            .then(getMaterials())
+            .then(getCategories())
     }, [])
 
     return (
@@ -81,12 +82,13 @@ export const CreateProject = () => {
                 </Form.Group>
                 <Form.Group>
                     <Form.Label id="project.tools"> Tools needed: </Form.Label>
-                    <Form.Control as="select" custom id="projectTools">
-                        <option value="0">Please Select A Tool..</option> 
-                    {
-                        tools.map(tool => <option value={tool.id}>{tool.name}</option>)
-                    }
-                    </Form.Control>
+                    <Multiselect
+                        options={tools} // Options to display in the dropdown
+                        selectedValues={tools.selectedValue} // Preselected value to persist in dropdown
+                        onSelect={tools.onSelect} // Function will trigger on select event
+                        onRemove={tools.onRemove} // Function will trigger on remove event
+                        displayValue="name" // Property name to display in the dropdown options
+                    />
                 </Form.Group>
                 <div className="cantFind">
                     <p className="cantFindText">Can't find tool?</p>
@@ -103,19 +105,21 @@ export const CreateProject = () => {
                         </Modal.Body>
                         <Modal.Footer>
                             <Button variant="primary" onClick={handleCloseTool}>
-                                Save 
+                                Save
                             </Button>
                         </Modal.Footer>
                     </Modal>
                 </div>
                 <Form.Group>
                     <Form.Label id="project.materials"> Materials needed: </Form.Label>
-                    <Form.Control as="select" custom>
-                        <option value="0">Please Select A Material..</option>
-                        {
-                        materials.map(material => <option value={material.id}>{material.name}</option>)
-                        }
-                    </Form.Control>
+                    <Multiselect
+                        options={materials} // Options to display in the dropdown
+                        selectedValues={materials.selectedValue} // Preselected value to persist in dropdown
+                        onSelect={materials.onSelect} // Function will trigger on select event
+                        onRemove={materials.onRemove} // Function will trigger on remove event
+                        displayValue="name" // Property name to display in the dropdown options
+                    />
+
                 </Form.Group>
                 <div className="cantFind">
                     <p className="cantFindText"> Can't find material?</p>
@@ -132,16 +136,16 @@ export const CreateProject = () => {
                         </Modal.Body>
                         <Modal.Footer>
                             <Button variant="primary" onClick={handleCloseMaterial}>
-                                Save 
+                                Save
                             </Button>
                         </Modal.Footer>
                     </Modal>
                 </div>
                 <Form.Group>
                     <Form.Label id="project.dateDue"> Date Due: </Form.Label>
-                    <Form.Control type="text" placeholder="datepicker? for bootstrap" />
+                    <Form.Control type="datetime-local" />
                 </Form.Group>
-                <Button> Save Project </Button>
+                <Button onClick={handleClickSaveProject}> Save Project </Button>
             </Form>
         </>
     )
