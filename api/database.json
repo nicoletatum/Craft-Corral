@@ -207,7 +207,7 @@
     "projectsTools": [
         {
             "id": 1,
-            "toolId": "",
+            "toolId": 1,
             "projectId": 1
         }
     ]

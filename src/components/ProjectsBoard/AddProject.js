@@ -2,11 +2,15 @@ import React, { useContext, useEffect, useState } from "react"
 import { useHistory } from 'react-router-dom';
 import { ProjectContext } from "./ProjectProvider"
 import { userStorageKey } from "../auth/authSettings"
+import { ToolContext } from "../Tools/ToolProvider"
+import { MaterialContext } from "../Materials/MaterialProvider"
 import { Form, FormLabel, Button, Jumbotron, Modal } from "react-bootstrap";
 import "./ProjectBoard.css"
 
 export const CreateProject = () => {
-    const { addProject } = useContext(ProjectContext)
+    const { addProject, getCategories, categories } = useContext(ProjectContext)
+    const { getTools, tools } = useContext(ToolContext)
+    const { getMaterials, materials } = useContext(MaterialContext)
 
     let currentUser = parseInt(sessionStorage.getItem(userStorageKey))
     const timestamp = new Date().toLocaleString()
@@ -16,7 +20,6 @@ export const CreateProject = () => {
         "categoryId": "",
         "description": "",
         "userId": currentUser,
-        "categoryId": 0,
         "dateCreated": timestamp,
         "dateDue": ""
     })
@@ -47,11 +50,13 @@ export const CreateProject = () => {
     const [showMaterial, setShowMaterial] = useState(false);
     const handleCloseMaterial = () => setShowMaterial(false);
     const handleShowMaterial = () => setShowMaterial(true);
-    // useEffect(() => {
-    //     getProjects()
-    // }, [])
 
-    // const
+    //"lifecycle" of component. (helps run and get data for variable)
+    useEffect(() => {
+        getTools()
+        .then(getMaterials())
+        .then(getCategories())
+    }, [])
 
     return (
         <>
@@ -64,7 +69,10 @@ export const CreateProject = () => {
                 <Form.Group>
                     <Form.Label id="project.categoryId"> Project Category: </Form.Label>
                     <Form.Control as="select" custom id="category" onChange={handleControlledInputChange}>
-                        <option></option>
+                        <option value="0">Select a Category</option>
+                        {
+                            categories.map(category => <option value={category.id}>{category.name}</option>)
+                        }
                     </Form.Control>
                 </Form.Group>
                 <Form.Group>
@@ -74,7 +82,10 @@ export const CreateProject = () => {
                 <Form.Group>
                     <Form.Label id="project.tools"> Tools needed: </Form.Label>
                     <Form.Control as="select" custom id="projectTools">
-                        <option></option>
+                        <option value="0">Please Select A Tool..</option> 
+                    {
+                        tools.map(tool => <option value={tool.id}>{tool.name}</option>)
+                    }
                     </Form.Control>
                 </Form.Group>
                 <div className="cantFind">
@@ -100,11 +111,10 @@ export const CreateProject = () => {
                 <Form.Group>
                     <Form.Label id="project.materials"> Materials needed: </Form.Label>
                     <Form.Control as="select" custom>
-                        <option></option>
-                        <option></option>
-                        <option></option>
-                        <option></option>
-                        <option></option>
+                        <option value="0">Please Select A Material..</option>
+                        {
+                        materials.map(material => <option value={material.id}>{material.name}</option>)
+                        }
                     </Form.Control>
                 </Form.Group>
                 <div className="cantFind">

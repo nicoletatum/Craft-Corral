@@ -10,7 +10,7 @@ export const MaterialProvider = (props) => {
     const getMaterials = () => {
         return fetch("http://localhost:8088/materials")
         .then(response => response.json())
-        .then(setProjects)
+        .then(setMaterials)
     }
 
     // const getProjectlById = (id) => {
@@ -18,23 +18,23 @@ export const MaterialProvider = (props) => {
     //         .then(res => res.json())
     // }
 
-    const addProject = projectObj => {
-        return fetch("http://localhost:8088/projects",{
+    const addMaterial = materialObj => {
+        return fetch("http://localhost:8088/materials",{
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify(projectObj)
+        body: JSON.stringify(materialObj)
         })
-            .then(getProjects)
+            .then(getMaterials)
     }
 
     //DONT FORGET TO COMMENT OUT WHAT THIS IS DOING????
     return (
-        <ProjectContext.Provider value={{
-            projects, getProjects, addProject
+        <MaterialContext.Provider value={{
+            materials, getMaterials, addMaterial
         }}>
             {props.children}
-        </ProjectContext.Provider>
+        </MaterialContext.Provider>
     )
 }

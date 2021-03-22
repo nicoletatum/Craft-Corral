@@ -8,10 +8,18 @@ export const ProjectProvider = (props) => {
     //useState stores data about component
     const [projects, setProjects] = useState([])
 
+    const [categories, setCategories] = useState([])
+
     const getProjects = () => {
         return fetch("http://localhost:8088/projects?_expand=category")
         .then(response => response.json())
         .then(setProjects)
+    }
+
+    const getCategories = () => {
+        return fetch("http://localhost:8088/categories")
+        .then(response => response.json())
+        .then(setCategories)
     }
 
     // const getProjectlById = (id) => {
@@ -31,9 +39,10 @@ export const ProjectProvider = (props) => {
     }
 
     //DONT FORGET TO COMMENT OUT WHAT THIS IS DOING????
+    //can access items in children of "props" whatever
     return (
         <ProjectContext.Provider value={{
-            projects, getProjects, addProject
+            projects, getProjects, addProject, getCategories, categories
         }}>
             {props.children}
         </ProjectContext.Provider>
