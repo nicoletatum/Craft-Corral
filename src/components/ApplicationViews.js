@@ -4,6 +4,7 @@ import { Home } from "./Home/Home"
 import { ProjectBoard } from "./ProjectsBoard/ProjectBoard"
 import { ProjectProvider } from "./ProjectsBoard/ProjectProvider"
 import { CreateProject } from "./ProjectsBoard/AddProject"
+import { ProjectEdit } from "./ProjectsBoard/EditProject"
 import { ToolProvider } from "./Tools/ToolProvider"
 import { MaterialProvider } from "./Materials/MaterialProvider"
 export const ApplicationViews = () => {
@@ -21,6 +22,9 @@ export const ApplicationViews = () => {
                         </Route>
                         <Route path="/addProject">
                             <CreateProject />
+                        </Route>
+                        <Route path="/projects/edit/:projectId(\d+)">
+                            <ProjectEdit />
                         </Route>
                     </MaterialProvider>
                 </ToolProvider>

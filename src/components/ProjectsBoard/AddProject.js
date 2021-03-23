@@ -17,10 +17,10 @@ export const CreateProject = () => {
     const timestamp = new Date().toLocaleString()
 
     const [project, setProject] = useState({
+        "userId": currentUser,
         "name": "",
         "categoryId": "",
         "description": "",
-        "userId": currentUser,
         "dateCreated": timestamp,
         "dateDue": ""
     })
@@ -69,7 +69,7 @@ export const CreateProject = () => {
                 </Form.Group>
                 <Form.Group>
                     <Form.Label id="project.categoryId"> Project Category: </Form.Label>
-                    <Form.Control as="select" custom id="category" onChange={handleControlledInputChange}>
+                    <Form.Control as="select" custom id="categoryId" onChange={handleControlledInputChange}>
                         <option value="0">Select a Category</option>
                         {
                             categories.map(category => <option value={category.id}>{category.name}</option>)

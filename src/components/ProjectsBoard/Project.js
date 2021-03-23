@@ -8,8 +8,7 @@ import { useHistory } from "react-router-dom"
 
 export const ProjectCard = ({ project }) => {
     
-    const { getProjects, deleteProject } = useContext(ProjectContext)
-
+    const { deleteProject, editProject } = useContext(ProjectContext)
     const history = useHistory()
 
     const handleDelete = () => {
@@ -19,6 +18,13 @@ export const ProjectCard = ({ project }) => {
             })
     }  
 
+    const handleEdit = () => {
+        editProject(project.id)
+        .then(() => {
+            history.push(`/projects/edit/${project.id}`)
+        })
+    }
+
     return (
             <Card className="ProjectCard">
             <Card.Title className="projectName">{project.name}</Card.Title>
@@ -27,7 +33,7 @@ export const ProjectCard = ({ project }) => {
             <div className="projectCreationDate">Date Started: {project.dateCreated}</div>
             <div className="projectCompletionDate">Complete by: {project.dateDue}</div>
             <Container>
-            <Button variant="light" size="sm" > edit </Button>
+            <Button onClick={handleEdit} variant="light" size="sm" > edit </Button>
             <Button onClick={handleDelete} variant="light" size="sm"> delete </Button>
             </Container>
         </Card>

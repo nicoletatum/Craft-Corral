@@ -12,14 +12,34 @@ export const ProjectProvider = (props) => {
 
     const getProjects = () => {
         return fetch("http://localhost:8088/projects?_expand=category")
-        .then(response => response.json())
-        .then(setProjects)
+            .then(response => response.json())
+            .then(setProjects)
     }
 
-    const getCategories = () => {
-        return fetch("http://localhost:8088/categories")
-        .then(response => response.json())
-        .then(setCategories)
+    const getProjectById = (projectId) => {
+        return fetch(`http://localhost:8088/projects/${projectId}`)
+            .then(res => res.json())
+    }
+
+    const addProject = projectObj => {
+        return fetch("http://localhost:8088/projects", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(projectObj)
+        })
+            .then(getProjects)
+    }
+    const editProject = project => {
+        return fetch(`http://localhost:8088/projects/edit/${project.id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(project)
+        })
+            .then(getProjects)
     }
 
     const deleteProject = (projectId) => {
@@ -29,27 +49,17 @@ export const ProjectProvider = (props) => {
             .then(getProjects)
     }
 
-    // const getProjectlById = (id) => {
-    //     return fetch(`http://localhost:8088/projects/${id}`)
-    //         .then(res => res.json())
-    // }
-
-    const addProject = projectObj => {
-        return fetch("http://localhost:8088/projects",{
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(projectObj)
-        })
-            .then(getProjects)
+    const getCategories = () => {
+        return fetch("http://localhost:8088/categories")
+            .then(response => response.json())
+            .then(setCategories)
     }
 
     //DONT FORGET TO COMMENT OUT WHAT THIS IS DOING????
     //can access items in children of "props" whatever
     return (
         <ProjectContext.Provider value={{
-            projects, getProjects, addProject, getCategories, categories, deleteProject
+            projects, getProjects, addProject, getCategories, categories, deleteProject, getProjectById, editProject
         }}>
             {props.children}
         </ProjectContext.Provider>
