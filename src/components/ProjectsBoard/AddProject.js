@@ -41,7 +41,6 @@ export const CreateProject = () => {
         event.preventDefault()
         addProject(project)
             .then(() => history.push("/projects"))
-
     }
     const [showTool, setShowTool] = useState(false);
     const handleCloseTool = () => setShowTool(false);
