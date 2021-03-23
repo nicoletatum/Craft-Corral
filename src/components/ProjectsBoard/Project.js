@@ -1,14 +1,20 @@
-import React, { useContext, useState } from "react"
+import React, { useContext, useState, useEffect } from "react"
 // import "./Project.css"
 import { ProjectContext } from "./ProjectProvider.js"
+import{ ProjectMaterialContext } from "../Materials/MaterialProjectProvider"
+import { MaterialContext } from "../Materials/MaterialProvider"
 import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card'
 import Container from 'react-bootstrap/Container'
 import { useHistory } from "react-router-dom"
 
-export const ProjectCard = ({ project }) => {
+export const ProjectCard = ({ project, projectMaterial }) => {
     
     const { deleteProject, editProject } = useContext(ProjectContext)
+    const { getProjectsMaterials } = useContext(ProjectMaterialContext)
+    const { materials, getMaterials } = useContext(MaterialContext)
+
+    //gives an object with methods on it. then goes back "through history" to new url
     const history = useHistory()
 
     const handleDelete = () => {
@@ -25,11 +31,39 @@ export const ProjectCard = ({ project }) => {
         })
     }
 
+    useEffect(() => {
+        getMaterials()
+    }, [])
+    
+        //map through projmaterials to find material(single object) CONTINUE 
+        //materials.find is going to find the object that matches criteria inside of find method
+        //materialname is each material object in database
+    // let projMat = projectMaterial.map(material => {
+    //     materials.find(materialName => {
+    //         return material.materialId === materialName.id
+    //     })
+    // })
+
+
+    // let userProjects = projects.filter(project => currentUser === project.userId)
+
     return (
-            <Card className="ProjectCard">
+        <Card className="ProjectCard">
+                {console.log("", projectMaterial)}
             <Card.Title className="projectName">{project.name}</Card.Title>
             <div className="projectDescription">Description: {project.description}</div>
             <div className="projectcategory">Category: {project.category?.name}</div>
+            <div className="projectTools">Tools Needed: </div>
+            <div className="projectMaterials">Materials Needed: 
+                {
+                    projectMaterial.map(material => {
+                    let matchMaterials = materials.find(materialName => {
+                        return material.materialId === materialName.id
+                    })
+                    return matchMaterials.name
+                }).join(", ")
+                }
+            </div>
             <div className="projectCreationDate">Date Started: {project.dateCreated}</div>
             <div className="projectCompletionDate">Complete by: {project.dateDue}</div>
             <Container>
