@@ -17,3 +17,9 @@
 .cantFindText{
     margin-right:1em;
 }
+
+.sortButtons{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}

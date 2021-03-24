@@ -18,7 +18,7 @@ export const ToolProvider = (props) => {
         //         .then(res => res.json())
         // }
         
-        const addTool = ToolObj => {
+        const addTool = toolObj => {
             return fetch("http://localhost:8088/tools",{
                 method: "POST",
                 headers: {
