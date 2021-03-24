@@ -65,3 +65,6 @@ export const ProjectProvider = (props) => {
         </ProjectContext.Provider>
     )
 }
+
+// http://localhost:8088/projectsMaterials?_expand=material&_expand=project
+

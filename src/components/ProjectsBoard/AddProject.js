@@ -9,6 +9,7 @@ import { Multiselect } from 'multiselect-react-dropdown'
 import "./ProjectBoard.css"
 
 export const CreateProject = () => {
+    //allows us to access components through tree 
     const { addProject, getCategories, categories } = useContext(ProjectContext)
     const { getTools, tools } = useContext(ToolContext)
     const { getMaterials, materials } = useContext(MaterialContext)
@@ -16,6 +17,7 @@ export const CreateProject = () => {
     let currentUser = parseInt(sessionStorage.getItem(userStorageKey))
     const timestamp = new Date().toLocaleString()
 
+    //storing data about project
     const [project, setProject] = useState({
         "userId": currentUser,
         "name": "",
@@ -24,7 +26,7 @@ export const CreateProject = () => {
         "dateCreated": timestamp,
         "dateDue": ""
     })
-
+    //gives objecct w/methods on it. will routre back to url
     const history = useHistory();
 
     const handleControlledInputChange = (event) => {

@@ -34,12 +34,12 @@ export const ProjectBoard = () => {
             {
                 userProjects.map(project => {
                     let materials = projectsMaterials.filter(material => material.projectId === project.id)
-                    console.log("materials", materials)
+                    // console.log("materials", materials)
                     return <ProjectCard key={project.id}
                     projectMaterial={materials}
                     project={project} /> 
                 })
-            }
+                                }
             </CardDeck>
         </>
     )

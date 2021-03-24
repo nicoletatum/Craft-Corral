@@ -1,9 +1,9 @@
 import { useState, createContext } from "react"
-
+//context allows a way to pass data through components tree w/o having to pass props DOWN manually at every level
 export const MaterialContext = createContext()
 
 export const MaterialProvider = (props) => {
-
+    
     //useState stores data about component
     const [materials, setMaterials] = useState([])
 
@@ -18,8 +18,7 @@ export const MaterialProvider = (props) => {
     //         .then(res => res.json())
     // }
 
-    //addprojectmaterial. to add all of the materials to project materials 
-
+    //addMaterial. to add all of the materials to project materials 
     const addMaterial = materialObj => {
         return fetch("http://localhost:8088/materials",{
         method: "POST",
