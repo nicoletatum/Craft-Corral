@@ -8,7 +8,7 @@ import Container from 'react-bootstrap/Container'
 import { useHistory } from "react-router-dom"
 // import "./Project.css"
 
-export const ProjectCard = ({ project, projectMaterial }) => {
+export const ProjectCard = ({ project }) => {
     
     const { deleteProject, editProject, getProjects } = useContext(ProjectContext)
     const { getProjectsMaterials, projectsMaterials } = useContext(ProjectMaterialContext)
@@ -23,7 +23,6 @@ export const ProjectCard = ({ project, projectMaterial }) => {
                 history.push("/projects")
             })
     }  
-
     const handleEdit = () => {
         editProject(project.id)
         .then(() => {
@@ -31,18 +30,14 @@ export const ProjectCard = ({ project, projectMaterial }) => {
         })
     }
 
+    //.then callback parenthesis look into 
     useEffect(() => {
         getProjects()
-        .then(getProjectsMaterials())
-        .then(getMaterials())
+        .then(getProjectsMaterials)
+        // .then(getMaterials())
     }, [])
     
         // map through projmaterials to find material(single object) CONTINUE 
-    // let matchingProjMat = projectsMaterials.map(material => {
-    //     materials.find(materialname => {
-    //         return materialname.id === material.id   
-    //     })
-    // })
     // let matchingProjMat = projectMaterial.map(material => {
     //     materials.find(materialName => {
     //         return materialName.id === material.id
@@ -51,7 +46,7 @@ export const ProjectCard = ({ project, projectMaterial }) => {
 
     // )
 
-    // let userProjects = projects.filter(project => currentUser === project.userId)
+    // let matchingProjectMaterialId = projectsMaterials.
 
     return (
         <Card className="ProjectCard">
@@ -61,10 +56,11 @@ export const ProjectCard = ({ project, projectMaterial }) => {
             <div className="projectcategory">Category: {project.category?.name}</div>
             {/* <div className="projectTools">Tools Needed: </div> */}
             <div className="projectsMaterials">Materials Needed: 
-            {
-                    let matchingProjectMaterialsName = projectsMaterials.map(material => {
-                })
-            }
+            { 
+                    projectsMaterials.map(materialProp => {
+                            return <div> {materialProp.material.name} </div>
+                    })
+                }
             </div>
             <div className="projectCreationDate">Date Started: {project.dateCreated}</div>
             <div className="projectCompletionDate">Complete by: {project.dateDue}</div>

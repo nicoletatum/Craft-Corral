@@ -2,25 +2,21 @@ import { useContext, useEffect } from "react"
 import { ProjectContext } from "./ProjectProvider.js"
 import { ProjectCard } from "./Project.js"
 import { userStorageKey } from "../auth/authSettings.js"
-import{ ProjectMaterialContext } from "../Materials/MaterialProjectProvider"
 import Button from 'react-bootstrap/Button';
 import { CardDeck, Jumbotron } from "react-bootstrap";
 import "./ProjectBoard.css"
 
 export const ProjectBoard = () => {
     const { projects, getProjects } = useContext(ProjectContext)
-    const { getProjectsMaterials, projectsMaterials } = useContext(ProjectMaterialContext)
-
+ 
     let currentUser = parseInt(sessionStorage.getItem(userStorageKey))
     
     useEffect(() => {
         getProjects()
-        .then(getProjectsMaterials())
     }, [])
     
     // filters through projects to only return those with matching userId
     let userProjects = projects.filter(project => currentUser === project.userId)
-    // const history = useHistory()
 
     return (
         <>
@@ -33,11 +29,9 @@ export const ProjectBoard = () => {
         <CardDeck>
             {
                 userProjects.map(project => {
-                    let materials = projectsMaterials.filter(material => material.projectId === project.id)
-                    // console.log("materials", materials)
+                    // console.log("material", materials)
                     return <ProjectCard key={project.id}
-                    projectMaterial={materials}
-                    project={project} /> 
+                                        project={project} /> 
                 })
                                 }
             </CardDeck>

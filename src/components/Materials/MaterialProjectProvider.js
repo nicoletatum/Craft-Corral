@@ -9,7 +9,7 @@ export const ProjectMaterialProvider = (props) => {
     const [projectsMaterials, setProjectsMaterials] = useState([])
 
     const getProjectsMaterials = () => {
-        return fetch("http://localhost:8088/projectsMaterials")
+        return fetch("http://localhost:8088/projectsMaterials?_expand=material")
         .then(response => response.json())
         .then(setProjectsMaterials)
     }
