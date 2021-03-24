@@ -28,12 +28,12 @@
       "dateDue": "05/01/2021"
     },
     {
-      "name": "2342341",
-      "categoryId": 5,
-      "description": "12341234",
       "userId": 1,
-      "dateCreated": "3/22/2021, 7:08:39 PM",
-      "dateDue": "",
+      "name": "Nicole Tatum",
+      "categoryId": "3",
+      "description": "sadcfsa",
+      "dateCreated": "3/24/2021, 5:57:07 PM",
+      "dateDue": "2021-03-11T17:57",
       "id": 4
     }
   ],
@@ -211,6 +211,11 @@
       "id": 4,
       "materialId": 8,
       "projectId": 1
+    },
+    {
+      "id": 5,
+      "materialId": 1,
+      "projectId": 2
     }
   ],
   "projectsTools": [

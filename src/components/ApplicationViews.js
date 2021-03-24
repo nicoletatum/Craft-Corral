@@ -8,6 +8,7 @@ import { ProjectEdit } from "./ProjectsBoard/EditProject"
 import { ToolProvider } from "./Tools/ToolProvider"
 import { MaterialProvider } from "./Materials/MaterialProvider"
 import { ProjectMaterialProvider } from "./Materials/MaterialProjectProvider"
+import { ProjectToolProvider } from "./Tools/ToolProjectProvider"
 export const ApplicationViews = () => {
     return (
         <>
@@ -19,15 +20,17 @@ export const ApplicationViews = () => {
                 <ToolProvider>
                     <MaterialProvider>
                         <ProjectMaterialProvider>
-                        <Route exact path="/projects">
-                            <ProjectBoard />
-                        </Route>
-                        <Route path="/addProject">
-                            <CreateProject />
-                        </Route>
-                        <Route path="/projects/edit/:projectId(\d+)">
-                            <ProjectEdit />
-                        </Route>
+                            <ProjectToolProvider>
+                                <Route exact path="/projects">
+                                    <ProjectBoard />
+                                </Route>
+                                <Route path="/addProject">
+                                    <CreateProject />
+                                </Route>
+                                <Route path="/projects/edit/:projectId(\d+)">
+                                    <ProjectEdit />
+                                </Route>
+                            </ProjectToolProvider>
                         </ProjectMaterialProvider>
                     </MaterialProvider>
                 </ToolProvider>

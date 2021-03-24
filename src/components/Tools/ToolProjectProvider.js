@@ -1,42 +1,43 @@
-// import { useState, createContext } from "react"
+import { useState, createContext } from "react"
 
-// export const ToolMaterialContext = createContext()
+//context provides a way to pass data through components tree w/o having to pass props DOWN manually at every level
+export const ProjectToolContext = createContext()
 
-// export const {ToolMaterialProvider} = (props) => {
+export const ProjectToolProvider = (props) => {
 
-//     //useState stores data about component
-//     const [toolsMaterials, setToolsMaterials] = useState([])
+    //useState stores data about component
+    const [projectsTools, setProjectsTools] = useState([])
 
-//     const getProjectsTools = () => {
-//         return fetch("http://localhost:8088/projectsTools")
-//         .then(response => response.json())
-//         .then(setMaterials)
-//     }
+    const getProjectsTools = () => {
+        return fetch("http://localhost:8088/projectsTools?_expand=tool&_expand=project")
+        .then(response => response.json())
+        .then(setProjectsTools)
+    }
 
-//     // const getProjectlById = (id) => {
-//     //     return fetch(`http://localhost:8088/projects/${id}`)
-//     //         .then(res => res.json())
-//     // }
+    const getProjectToolById = (id) => {
+        return fetch(`http://localhost:8088/projects/${id}`)
+            .then(res => res.json())
+    }
 
-//     //addprojectmaterial. to add all of the materials to project materials 
+    //addprojectmaterial. to add all of the materials to project materials 
 
-//     const addprojectMaterial = projectMaterialObj => {
-//         return fetch("http://localhost:8088/projectsMaterials",{
-//         method: "POST",
-//         headers: {
-//             "Content-Type": "application/json"
-//         },
-//         body: JSON.stringify(projectMaterialObj)
-//         })
-//             .then(getProjectsMaterials)
-//     }
+    const addProjectTool = projectToolObj => {
+        return fetch("http://localhost:8088/projectsTools",{
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(projectToolObj)
+        })
+            .then(getProjectsTools)
+    }
 
-//     //DONT FORGET TO COMMENT OUT WHAT THIS IS DOING????
-//     return (
-//         <ProjectMaterialContext.Provider value={{
-//             projectsMaterials, getProjectsMaterials, addProjectsMaterial
-//         }}>
-//             {props.children}
-//         </ProjectMaterialContext.Provider>
-//     )
-// }
+    //DONT FORGET TO COMMENT OUT WHAT THIS IS DOING????
+    return (
+        <ProjectToolContext.Provider value={{
+            projectsTools, getProjectsTools, addProjectTool, getProjectToolById
+        }}>
+            {props.children}
+        </ProjectToolContext.Provider>
+    )
+}
