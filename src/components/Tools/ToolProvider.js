@@ -1,5 +1,6 @@
 import { useState, createContext } from "react"
 
+//asigns a way to pass data w/o having to pass props manually by using createContext
 export const ToolContext = createContext()
 
 export const ToolProvider = (props) => {
