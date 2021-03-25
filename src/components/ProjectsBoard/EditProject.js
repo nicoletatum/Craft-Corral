@@ -6,8 +6,7 @@ import { ToolContext } from "../Tools/ToolProvider"
 import { MaterialContext } from "../Materials/MaterialProvider"
 import { Form, FormLabel, Button, Jumbotron, Modal } from "react-bootstrap";
 import { Multiselect } from 'multiselect-react-dropdown'
-import Card from 'react-bootstrap/Card'
-import Container from 'react-bootstrap/Container'
+
 // import "./Project.css"
 
 export const ProjectEdit = () => {
