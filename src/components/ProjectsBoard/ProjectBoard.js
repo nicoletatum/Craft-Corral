@@ -7,28 +7,36 @@ import { CardDeck, Form, Jumbotron } from "react-bootstrap";
 import "./ProjectBoard.css"
 
 export const ProjectBoard = () => {
-    const { projects, getProjects, getCategories, categories } = useContext(ProjectContext)
-    // const [filteredProjects, setFilteredProjects] = useState([])
+    const { projects, getProjects, getProjectsByUserId, getCategories, categories } = useContext(ProjectContext)
+    const [filteredProjects, setFilteredProjects] = useState([])
 
 
     let currentUser = parseInt(sessionStorage.getItem(userStorageKey))
 
-
     useEffect(() => {
-        getProjects()
-            .then(getCategories())
-    }, [])
+        getProjectsByUserId(currentUser)
+        // .then(setFilteredProjects(projects))
+        .then(getCategories)
+        }, [])
+        
+        useEffect(() => {
+            console.log("filterdProjects", filteredProjects)
+            setFilteredProjects(projects)
+            }, [projects])
 
+        // console.log("projects",projects)
     // filters through projects to only return those with matching userId
-    let userProjects = projects.filter(project => currentUser === project.userId)
+    // let userProjects = projects.filter(project => currentUser === project.userId)
 
     const handleFilterProjects = (event) => {
-        let selectedVal = event.target.value
+        let selectedVal = +event.target.value
         if (event.target.id !== "0") {
-            projects.filter(project => {
-                return project.classId === parseInt(selectedVal)
+            let filteredProj = filteredProjects.filter(project => {
+                return project.categoryId === parseInt(selectedVal)
             })
-            {console.log(selectedVal)}
+            setFilteredProjects(filteredProj)
+        } else {
+            setFilteredProjects(projects)
         }
     }  
 
@@ -48,8 +56,8 @@ export const ProjectBoard = () => {
             </div>
             <CardDeck>
                 {
-                    userProjects.map(project => {
-                        // console.log("material", materials)
+                    filteredProjects.map(project => {
+
                         return <ProjectCard key={project.id}
                             project={project} />
                     })

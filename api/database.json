@@ -1,51 +1,5 @@
 {
-  "projects": [
-    {
-      "id": 1,
-      "name": "Penguin Man",
-      "description": "I work at 21c hotels and we have penguins we move around. I thought it would be funny to make one that turned into a person and put it in the employee stairwell.",
-      "userId": 1,
-      "categoryId": 1,
-      "dateCreated": "01/01/2021",
-      "dateDue": "05/01/2021"
-    },
-    {
-      "id": 2,
-      "name": "Kiln",
-      "description": "I got a kiln at an estate sale but i dont trust the wires. I need to rewire it",
-      "userId": 1,
-      "categoryId": 3,
-      "dateCreated": "01/01/2021",
-      "dateDue": "05/01/2021"
-    },
-    {
-      "id": 3,
-      "name": "Penguin Man",
-      "description": "I work at 21c hotels and we have penguins we move around. I thought it would be funny to make one that turned into a person and put it in the employee stairwell.",
-      "userId": 2,
-      "categoryId": 1,
-      "dateCreated": "01/01/2021",
-      "dateDue": "05/01/2021"
-    },
-    {
-      "userId": 1,
-      "name": "Nicole Tatum",
-      "categoryId": "3",
-      "description": "sadcfsa",
-      "dateCreated": "3/24/2021, 5:57:07 PM",
-      "dateDue": "2021-03-11T17:57",
-      "id": 4
-    },
-    {
-      "userId": 1,
-      "name": "Nicole Tatum",
-      "categoryId": "6",
-      "description": "asdf",
-      "dateCreated": "3/25/2021, 12:12:15 AM",
-      "dateDue": "",
-      "id": 5
-    }
-  ],
+  "projects": [],
   "users": [
     {
       "id": 1,
@@ -151,6 +105,11 @@
       "name": "glitter",
       "userId": 1,
       "id": 11
+    },
+    {
+      "name": "test",
+      "userId": 1,
+      "id": 12
     }
   ],
   "tools": [
@@ -213,60 +172,13 @@
       "name": "rubber duck",
       "userId": 1,
       "id": 16
+    },
+    {
+      "name": "test",
+      "userId": 1,
+      "id": 17
     }
   ],
-  "projectsMaterials": [
-    {
-      "id": 1,
-      "materialId": 1,
-      "projectId": 1
-    },
-    {
-      "id": 2,
-      "materialId": 5,
-      "projectId": 1
-    },
-    {
-      "id": 3,
-      "materialId": 6,
-      "projectId": 1
-    },
-    {
-      "id": 4,
-      "materialId": 8,
-      "projectId": 1
-    },
-    {
-      "id": 5,
-      "materialId": 1,
-      "projectId": 2
-    },
-    {
-      "projectId": 0,
-      "materialId": 0,
-      "id": 6
-    },
-    {
-      "projectId": 0,
-      "materialId": 0,
-      "id": 7
-    },
-    {
-      "projectId": 0,
-      "materialId": 0,
-      "id": 8
-    },
-    {
-      "projectId": 0,
-      "materialId": 0,
-      "id": 9
-    }
-  ],
-  "projectsTools": [
-    {
-      "id": 1,
-      "toolId": 1,
-      "projectId": 1
-    }
-  ]
+  "projectsMaterials": [],
+  "projectsTools": []
 }

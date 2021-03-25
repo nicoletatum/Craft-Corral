@@ -7,16 +7,23 @@ import { MaterialContext } from "../Materials/MaterialProvider"
 import { Form, FormLabel, Button, Jumbotron, Modal } from "react-bootstrap";
 import { Multiselect } from 'multiselect-react-dropdown'
 import "./ProjectBoard.css"
+import { ProjectMaterialContext } from "../Materials/MaterialProjectProvider";
+import { ProjectToolContext } from "../Tools/ToolProjectProvider";
 
 export const CreateProject = () => {
     //allows us to access components through tree 
     const { addProject, getCategories, categories } = useContext(ProjectContext)
     const { getTools, tools, addTool } = useContext(ToolContext)
     const { getMaterials, materials, addMaterial } = useContext(MaterialContext)
+    const { addProjectMaterial, projectsMaterials } = useContext(ProjectMaterialContext)
+    const { addProjectTool, projectsTools } = useContext(ProjectToolContext)
 
     let currentUser = parseInt(sessionStorage.getItem(userStorageKey))
     const timestamp = new Date().toLocaleString()
     const history = useHistory();
+
+    const [selectedMaterials, setSelectedMaterials] = useState([])
+    const [selectedTools, setSelectedTools] = useState([])
 
     //storing data about project
     const [project, setProject] = useState({
@@ -28,9 +35,19 @@ export const CreateProject = () => {
         "dateDue": ""
     })
 
+    const [projectsTool, setProjectTool] = useState({
+        "projectId": 0,
+        "toolId": 0
+    })
+
     const [tool, setTool] = useState({
         "name": "",
         "userId": currentUser
+    })
+
+    const [projectsMaterial, setProjectMaterial] = useState({
+        "projectId": 0,
+        "materialId": 0
     })
 
     const [material, setMaterial] = useState({
@@ -63,11 +80,43 @@ export const CreateProject = () => {
         setMaterial(newMaterial)
     }
 
+    const handleMultiSelectTools = (selectedList, selectedItem) => {
+        const newSelectedTools = selectedTools.slice()
+        newSelectedTools.push(selectedItem)
+        setSelectedTools(selectedList)
+        console.log(selectedTools, "selectedTools")
+    }
+
+    const handleMultiSelectMaterials = (selectedList, selectedItem) => {
+        const newSelectedMaterials = selectedMaterials.slice()
+        newSelectedMaterials.push(selectedItem)
+        setSelectedMaterials(selectedList)
+    }
+
     const handleClickSaveProject = (event) => {
         event.preventDefault()
         addProject(project)
-            .then(() => history.push("/projects"))
+        .then(response => {
+            console.log("response", response)
+            selectedMaterials.map(material => {
+            const newProjectMaterial = {
+                projectId: response.id,
+                materialId: material.id
+            }
+            addProjectMaterial(newProjectMaterial)
+        })
+        console.log(selectedTools, "selectedTools in save")
+        selectedTools.map(tool => {
+            const newProjectTool = {
+                projectId: response.id,
+                toolId: tool.id
+            }
+            addProjectTool(newProjectTool)
+        })
+            history.push("/projects")
+    })
     }
+
 
     const handleClickSaveTool = (event) => {
         event.preventDefault()
@@ -123,7 +172,7 @@ export const CreateProject = () => {
                     <Multiselect
                         options={tools} // Options to display in the dropdown
                         selectedValues={tools.selectedValue} // Preselected value to persist in dropdown
-                        onSelect={tools.onSelect} // Function will trigger on select event
+                        onSelect={handleMultiSelectTools} // Function will trigger on select event
                         onRemove={tools.onRemove} // Function will trigger on remove event
                         displayValue="name" // Property name to display in the dropdown options
                     />
@@ -153,7 +202,7 @@ export const CreateProject = () => {
                     <Multiselect
                         options={materials} // Options to display in the dropdown
                         selectedValues={materials.selectedValue} // Preselected value to persist in dropdown
-                        onSelect={materials.onSelect} // Function will trigger on select event
+                        onSelect={handleMultiSelectMaterials} // Function will trigger on select event
                         onRemove={materials.onRemove} // Function will trigger on remove event
                         displayValue="name" // Property name to display in the dropdown options
                     />
