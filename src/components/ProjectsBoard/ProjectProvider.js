@@ -15,6 +15,11 @@ export const ProjectProvider = (props) => {
             .then(response => response.json())
             .then(setProjects)
     }
+    const getProjectsByUserId = (userId) => {
+        return fetch(`http://localhost:8088/projects?_expand=category&userId=${userId}`)
+            .then(response => response.json())
+            .then(setProjects)
+    }
 
     const getProjectById = (projectId) => {
         return fetch(`http://localhost:8088/projects/${projectId}`)
@@ -29,7 +34,8 @@ export const ProjectProvider = (props) => {
             },
             body: JSON.stringify(projectObj)
         })
-            .then(getProjects)
+        .then(response => response.json())
+            // .then(getProjects)
     }
     const editProject = project => {
         return fetch(`http://localhost:8088/projects/edit/${project.id}`, {
@@ -59,7 +65,7 @@ export const ProjectProvider = (props) => {
     //can access items in children of "props" whatever
     return (
         <ProjectContext.Provider value={{
-            projects, getProjects, addProject, getCategories, categories, deleteProject, getProjectById, editProject
+            projects, getProjects, getProjectsByUserId, addProject, getCategories, categories, deleteProject, getProjectById, editProject
         }}>
             {props.children}
         </ProjectContext.Provider>
