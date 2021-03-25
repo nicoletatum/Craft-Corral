@@ -14,7 +14,7 @@ export const ProjectCard = ({ project }) => {
     const { deleteProject, editProject, getProjects } = useContext(ProjectContext)
     const { getProjectsMaterials, projectsMaterials } = useContext(ProjectMaterialContext)
     const { getProjectsTools, projectsTools } = useContext(ProjectToolContext)
-    const { materials, getMaterials } = useContext(MaterialContext)
+    // const { materials, getMaterials } = useContext(MaterialContext)
 
     //gives an object with methods on it. then goes back "through history" to new url
     const history = useHistory()
@@ -42,7 +42,6 @@ export const ProjectCard = ({ project }) => {
     
     return (
         <Card className="ProjectCard">
-                {console.log("pm", materials)}
             <Card.Title className="projectName">{project.name}</Card.Title>
             <div className="projectDescription">Description: {project.description}</div>
             <div className="projectcategory">Category: {project.category?.name}</div>
