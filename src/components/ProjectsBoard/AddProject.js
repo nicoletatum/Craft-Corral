@@ -4,7 +4,7 @@ import { ProjectContext } from "./ProjectProvider"
 import { userStorageKey } from "../auth/authSettings"
 import { ToolContext } from "../Tools/ToolProvider"
 import { MaterialContext } from "../Materials/MaterialProvider"
-import { Form, FormLabel, Button, Jumbotron, Modal } from "react-bootstrap";
+import { Form, Button, Jumbotron, Modal } from "react-bootstrap";
 import { Multiselect } from 'multiselect-react-dropdown'
 import "./ProjectBoard.css"
 import { ProjectMaterialContext } from "../Materials/MaterialProjectProvider";
@@ -29,7 +29,7 @@ export const CreateProject = () => {
     const [project, setProject] = useState({
         "userId": currentUser,
         "name": "",
-        "categoryId": "",
+        "categoryId": 0,
         "description": "",
         "dateCreated": timestamp,
         "dateDue": ""
@@ -55,11 +55,11 @@ export const CreateProject = () => {
         "userId": currentUser
     })
 
-    //gives objecct w/methods on it. will routre back to url
+    //gives object w/methods on it. will routre back to url
     const handleControlledInputChange = (event) => {
         const newProject = { ...project }
         let selectedVal = event.target.value
-        if (event.target.id.includes("id")) {
+        if (event.target.id.includes("id") || event.target.id.includes("Id")) {
             selectedVal = parseInt(selectedVal)
         }
         newProject[event.target.id] = selectedVal
@@ -230,7 +230,7 @@ export const CreateProject = () => {
                 </div>
                 <Form.Group>
                     <Form.Label id="project.dateDue"> Date Due: </Form.Label>
-                    <Form.Control type="datetime-local" />
+                    <Form.Control type="datetime-local" id="dateDue" onChange={handleControlledInputChange} />
                 </Form.Group>
                 <Button onClick={handleClickSaveProject}> Save Project </Button>
             </Form>

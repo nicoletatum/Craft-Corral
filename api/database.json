@@ -1,5 +1,24 @@
 {
-  "projects": [],
+  "projects": [
+    {
+      "id": 1,
+      "name": "Penguin Man",
+      "description": "I work at 21c hotels and we have penguins we move around. I thought it would be funny to make one that turned into a person and put it in the employee stairwell.",
+      "userId": 1,
+      "categoryId": 1,
+      "dateCreated": "01/01/2021",
+      "dateDue": "05/01/2021"
+    },
+    {
+      "userId": 1,
+      "name": "Nicole Tatum",
+      "categoryId": 6,
+      "description": "ZX",
+      "dateCreated": "3/26/2021, 11:22:01 AM",
+      "dateDue": "2021-03-28T11:22",
+      "id": 2
+    }
+  ],
   "users": [
     {
       "id": 1,
@@ -110,6 +129,11 @@
       "name": "test",
       "userId": 1,
       "id": 12
+    },
+    {
+      "name": "paint ",
+      "userId": 1,
+      "id": 13
     }
   ],
   "tools": [
@@ -177,8 +201,45 @@
       "name": "test",
       "userId": 1,
       "id": 17
+    },
+    {
+      "name": "paintbrush",
+      "userId": 1,
+      "id": 18
     }
   ],
-  "projectsMaterials": [],
-  "projectsTools": []
+  "projectsMaterials": [
+    {
+      "projectId": 1,
+      "materialId": 2,
+      "id": 1
+    },
+    {
+      "projectId": 1,
+      "materialId": 4,
+      "id": 2
+    },
+    {
+      "projectId": 2,
+      "materialId": 3,
+      "id": 3
+    }
+  ],
+  "projectsTools": [
+    {
+      "projectId": 1,
+      "toolId": 3,
+      "id": 1
+    },
+    {
+      "projectId": 1,
+      "toolId": 4,
+      "id": 2
+    },
+    {
+      "projectId": 2,
+      "toolId": 3,
+      "id": 3
+    }
+  ]
 }

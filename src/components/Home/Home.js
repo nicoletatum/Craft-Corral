@@ -1,7 +1,6 @@
 import React from "react";
 import "./Home.css"
 import Crusty from "../crusty.png"
-// import { PropsAndState } from './PropsAndState'
 
 export const Home = () => (
     <>
