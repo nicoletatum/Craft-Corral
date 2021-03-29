@@ -11,7 +11,7 @@ import { ProjectToolContext } from "../Tools/ToolProjectProvider.js"
 
 export const ProjectCard = ({ project }) => {
     
-    const { deleteProject, editProject, getProjects } = useContext(ProjectContext)
+    const { deleteProject } = useContext(ProjectContext)
     const { getProjectsMaterials, projectsMaterials } = useContext(ProjectMaterialContext)
     const { getProjectsTools, projectsTools } = useContext(ProjectToolContext)
     // const { materials, getMaterials } = useContext(MaterialContext)
@@ -25,17 +25,10 @@ export const ProjectCard = ({ project }) => {
                 history.push("/projects")
             })
     }  
-    const handleEdit = () => {
-        editProject(project.id)
-        .then(() => {
-            history.push(`/projects/edit/${project.id}`)
-        })
-    }
 
     //.then callback parenthesis look into 
     useEffect(() => {
-        getProjects()
-        .then(getProjectsMaterials)
+        getProjectsMaterials()
         .then(getProjectsTools)
         // .then(getMaterials())
     }, [])
@@ -49,7 +42,7 @@ export const ProjectCard = ({ project }) => {
             { 
                     projectsTools.map(pt => {
                         if (pt.projectId === project.id) 
-                        return <div> {pt.tool.name} </div>}
+                        return <div key={pt.id}> {pt.tool.name} </div>}
                         )
             }
             </div>
@@ -57,14 +50,17 @@ export const ProjectCard = ({ project }) => {
             { 
                     projectsMaterials.map(pm => {
                         if (pm.projectId === project.id) 
-                        return <div> {pm.material.name} </div>}
+                        return <div key={pm.id}> {pm.material.name} </div>}
                         )
             }
             </div>
             <div className="projectCreationDate">Date Started: {project.dateCreated}</div>
             <div className="projectCompletionDate">Complete by: {project.dateDue}</div>
             <Container>
-            <Button onClick={handleEdit} variant="light" size="sm" > edit </Button>
+            <Button onClick={() => {
+                history.push(`/projects/edit/${project.id}`)
+                }}
+                variant="light" size="sm" > edit </Button>
             <Button onClick={handleDelete} variant="light" size="sm"> delete </Button>
             </Container>
         </Card>
