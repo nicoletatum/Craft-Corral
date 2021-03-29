@@ -19,8 +19,6 @@ export const ProjectToolProvider = (props) => {
             .then(res => res.json())
     }
 
-    //addprojectmaterial. to add all of the materials to project materials 
-
     const addProjectTool = projectToolObj => {
         return fetch("http://localhost:8088/projectsTools",{
         method: "POST",

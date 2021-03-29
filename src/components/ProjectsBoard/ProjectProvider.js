@@ -7,8 +7,8 @@ export const ProjectProvider = (props) => {
 
     //useState stores data about component
     const [projects, setProjects] = useState([])
-
     const [categories, setCategories] = useState([])
+    // const [searchTerms, setSearchTerms] = useState("")
 
     const getProjects = () => {
         return fetch("http://localhost:8088/projects?_expand=category")
@@ -37,15 +37,16 @@ export const ProjectProvider = (props) => {
         .then(response => response.json())
             // .then(getProjects)
     }
-    const editProject = project => {
-        return fetch(`http://localhost:8088/projects/edit/${project.id}`, {
+    const editProject = (project) => {
+        debugger
+        return fetch(`http://localhost:8088/projects/${project.id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(project)
         })
-            .then(getProjects)
+            .then(response => response.json())
     }
 
     const deleteProject = (projectId) => {
