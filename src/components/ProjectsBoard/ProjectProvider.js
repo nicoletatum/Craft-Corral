@@ -38,7 +38,6 @@ export const ProjectProvider = (props) => {
             // .then(getProjects)
     }
     const editProject = (project) => {
-        debugger
         return fetch(`http://localhost:8088/projects/${project.id}`, {
             method: "PUT",
             headers: {
@@ -46,7 +45,7 @@ export const ProjectProvider = (props) => {
             },
             body: JSON.stringify(project)
         })
-            .then(response => response.json())
+            .then(response => response.json())                              
     }
 
     const deleteProject = (projectId) => {

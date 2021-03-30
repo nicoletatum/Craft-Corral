@@ -10,7 +10,7 @@ export const NavBar = (props) => {
         <Jumbotron className="headBlock">
             <div className="titleblock">
             <h1 className="title"> Crusty's Craft Corral </h1>
-            <h3 className="subHead">wranglin' creative endeavors for forty years </h3>
+            <h4 className="subHead"><em>wranglin' creative endeavors for forty years </em></h4>
             </div> 
 
             <Navbar className="navBar">

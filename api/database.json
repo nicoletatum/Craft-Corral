@@ -2,12 +2,12 @@
   "projects": [
     {
       "id": 1,
-      "name": "Penguin Man",
-      "description": "I work at 21c hotels and we have penguins we move around. I thought it would be funny to make one that turned into a person and put it in the employee stairwell.",
       "userId": 1,
+      "name": "Penguin Man",
       "categoryId": 1,
+      "description": "I work at 21c hotels and we have penguins we move around. I thought it would be funny to make one that turned into a person and put it in the employee stairwell.",
       "dateCreated": "01/01/2021",
-      "dateDue": "05/01/2021"
+      "dateDue": "2021-03-31T13:56"
     },
     {
       "id": 3,

@@ -14,6 +14,17 @@ export const ProjectToolProvider = (props) => {
         .then(setProjectsTools)
     }
 
+    // const editProjectsTools = (projectTool) => {
+    //     return fetch(`http://localhost:8088/projects/${project.id}`, {
+    //         method: "PUT",
+    //         headers: {
+    //             "Content-Type": "application/json"
+    //         },
+    //         body: JSON.stringify(project)
+    //     })
+    //         .then(response => response.json())
+    // }
+
     const getProjectToolById = (id) => {
         return fetch(`http://localhost:8088/projects/${id}`)
             .then(res => res.json())

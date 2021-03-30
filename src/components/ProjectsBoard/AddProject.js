@@ -1,14 +1,14 @@
 import React, { useContext, useEffect, useState } from "react"
 import { useHistory } from 'react-router-dom';
-import { ProjectContext } from "./ProjectProvider"
 import { userStorageKey } from "../auth/authSettings"
-import { ToolContext } from "../Tools/ToolProvider"
+import { ProjectContext } from "./ProjectProvider"
 import { MaterialContext } from "../Materials/MaterialProvider"
-import { Form, Button, Jumbotron, Modal } from "react-bootstrap";
+import { ProjectMaterialContext } from "../Materials/MaterialProjectProvider";
+import { ToolContext } from "../Tools/ToolProvider"
+import { ProjectToolContext } from "../Tools/ToolProjectProvider";
 import { Multiselect } from 'multiselect-react-dropdown'
 import "./ProjectBoard.css"
-import { ProjectMaterialContext } from "../Materials/MaterialProjectProvider";
-import { ProjectToolContext } from "../Tools/ToolProjectProvider";
+import { Form, Button, Jumbotron, Modal, Container } from "react-bootstrap";
 
 export const CreateProject = () => {
     //allows us to access components through tree 
@@ -117,7 +117,6 @@ export const CreateProject = () => {
     })
     }
 
-
     const handleClickSaveTool = (event) => {
         event.preventDefault()
         addTool(tool)
@@ -148,6 +147,7 @@ export const CreateProject = () => {
 
     return (
         <>
+        <Container className="projectContainer">
             <Jumbotron className="projectsTitle"> <h3>Project Form</h3> </Jumbotron>
             <Form className="projectForm">
                 <Form.Group>
@@ -234,6 +234,7 @@ export const CreateProject = () => {
                 </Form.Group>
                 <Button onClick={handleClickSaveProject}> Save Project </Button>
             </Form>
+            </Container>
         </>
     )
 }
