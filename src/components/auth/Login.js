@@ -17,7 +17,6 @@ export const Login = () => {
         setLoginUser(newUser)
     }
 
-
     const existingUserCheck = () => {
         return fetch(`${authApi.localApiBaseUrl}/${authApi.endpoint}?email=${loginUser.email}`)
             .then(res => res.json())

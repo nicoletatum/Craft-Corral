@@ -6,19 +6,22 @@ import { CardDeck, Form, Jumbotron, Container } from "react-bootstrap";
 // import "./ProjectBoard.css"
 
 export const ProjectBoard = () => {
-    const { projects, getProjects, getProjectsByUserId, getCategories, categories } = useContext(ProjectContext)
+    const { projects, getProjectsByUserId, getCategories, categories } = useContext(ProjectContext)
     const [filteredProjects, setFilteredProjects] = useState([])
     let currentUser = parseInt(sessionStorage.getItem(userStorageKey))
 
+    //renders projects and categories 
     useEffect(() => {
         getProjectsByUserId(currentUser)
             .then(getCategories)
     }, [])
 
+    //renders projects sorted by category dropdown. only when projects changes (see handlefilterprojects for what that change is)
     useEffect(() => {
         setFilteredProjects(projects)
     }, [projects])
 
+    //on event, SFP is set to projects with catId===cat.id selected
     const handleFilterProjects = (event) => {
         let selectedVal = event.target.value
         if (selectedVal !== "0") {
@@ -43,7 +46,6 @@ export const ProjectBoard = () => {
                             categories.map(selectCategory => <option value={selectCategory.id} key={selectCategory.id}>{selectCategory.name}</option>)
                         }
                     </Form.Control>
-                    {/* <Button>Date Created(date due?)</Button> */}
                 </div>
                 <CardDeck>
                     {

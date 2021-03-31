@@ -43,3 +43,11 @@
     background-color: transparent;
     border:black solid;
 }
+.formButton{
+    background-color:transparent;
+    /* outline:red; */
+}
+.MS{
+    color:red
+
+}

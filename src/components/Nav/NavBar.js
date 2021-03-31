@@ -1,5 +1,5 @@
 import React from "react"
-import { Navbar, Nav, Jumbotron } from 'react-bootstrap'
+import { Navbar, Nav, Jumbotron, Container,  } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 // import { authApi, userStorageKey } from "../auth/authSettings"
 import "./NavBar.css"

@@ -13,11 +13,6 @@ export const MaterialProvider = (props) => {
         .then(setMaterials)
     }
 
-    // const getProjectlById = (id) => {
-    //     return fetch(`http://localhost:8088/projects/${id}`)
-    //         .then(res => res.json())
-    // }
-
     //addMaterial. to add all of the materials to project materials 
     const addMaterial = materialObj => {
         return fetch("http://localhost:8088/materials",{
@@ -30,7 +25,6 @@ export const MaterialProvider = (props) => {
             .then(getMaterials)
     }
 
-    //DONT FORGET TO COMMENT OUT WHAT THIS IS DOING????
     return (
         <MaterialContext.Provider value={{
             materials, getMaterials, addMaterial

@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react"
+import React, { useContext, useEffect } from "react"
 import { useHistory } from "react-router-dom"
 import { ProjectContext } from "./ProjectProvider.js"
 import{ ProjectMaterialContext } from "../Materials/MaterialProjectProvider"
@@ -8,6 +8,7 @@ import "./ProjectBoard.css"
 
 export const ProjectCard = ({ project }) => {
     
+    //creates a global state for data passing through components(allows me to access data)
     const { deleteProject } = useContext(ProjectContext)
     const { getProjectsMaterials, projectsMaterials } = useContext(ProjectMaterialContext)
     const { getProjectsTools, projectsTools } = useContext(ProjectToolContext)
@@ -21,7 +22,7 @@ export const ProjectCard = ({ project }) => {
             })
     }  
 
-    //.then callback parenthesis look into 
+    //renders tools and materials for projects 
     useEffect(() => {
         getProjectsMaterials()
         .then(getProjectsTools)

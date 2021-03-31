@@ -10,13 +10,13 @@
       "dateDue": "2021-03-31T13:56"
     },
     {
-      "id": 3,
+      "id": 2,
       "userId": 1,
-      "name": "dog door ",
-      "categoryId": 5,
-      "description": "rosie dog door",
-      "dateCreated": "3/28/2021, 1:55:19 PM",
-      "dateDue": "2021-03-31T13:56"
+      "name": "mvp",
+      "categoryId": 7,
+      "description": "get mvp approval",
+      "dateCreated": "3/30/2021, 7:52:03 PM",
+      "dateDue": "2021-03-31T19:52"
     }
   ],
   "users": [
@@ -124,16 +124,6 @@
       "name": "glitter",
       "userId": 1,
       "id": 11
-    },
-    {
-      "name": "test",
-      "userId": 1,
-      "id": 12
-    },
-    {
-      "name": "paint ",
-      "userId": 1,
-      "id": 13
     }
   ],
   "tools": [
@@ -188,29 +178,14 @@
       "userId": 1
     },
     {
-      "name": "cheese",
+      "name": "computer",
       "userId": 1,
-      "id": 15
+      "id": 11
     },
     {
-      "name": "rubber duck",
+      "name": "glue",
       "userId": 1,
-      "id": 16
-    },
-    {
-      "name": "test",
-      "userId": 1,
-      "id": 17
-    },
-    {
-      "name": "paintbrush",
-      "userId": 1,
-      "id": 18
-    },
-    {
-      "name": "level",
-      "userId": 1,
-      "id": 19
+      "id": 12
     }
   ],
   "projectsMaterials": [
@@ -223,21 +198,6 @@
       "projectId": 1,
       "materialId": 4,
       "id": 2
-    },
-    {
-      "projectId": 3,
-      "materialId": 3,
-      "id": 4
-    },
-    {
-      "projectId": 3,
-      "materialId": 10,
-      "id": 5
-    },
-    {
-      "projectId": 3,
-      "materialId": 8,
-      "id": 6
     }
   ],
   "projectsTools": [
@@ -252,19 +212,9 @@
       "id": 2
     },
     {
-      "projectId": 3,
-      "toolId": 1,
-      "id": 4
-    },
-    {
-      "projectId": 3,
-      "toolId": 4,
-      "id": 5
-    },
-    {
-      "projectId": 3,
-      "toolId": 19,
-      "id": 6
+      "projectId": 2,
+      "toolId": 11,
+      "id": 3
     }
   ]
 }

@@ -1,6 +1,6 @@
 import { useState, createContext } from "react"
 
-//context allows a way to pass data through components tree w/o having to pass props DOWN manually at every level
+//context allows data to be passed through components tree w/o having to pass props DOWN manually at every level
 export const ProjectContext = createContext()
 
 export const ProjectProvider = (props) => {
@@ -8,7 +8,6 @@ export const ProjectProvider = (props) => {
     //useState stores data about component
     const [projects, setProjects] = useState([])
     const [categories, setCategories] = useState([])
-    // const [searchTerms, setSearchTerms] = useState("")
 
     const getProjects = () => {
         return fetch("http://localhost:8088/projects?_expand=category")
@@ -35,7 +34,6 @@ export const ProjectProvider = (props) => {
             body: JSON.stringify(projectObj)
         })
         .then(response => response.json())
-            // .then(getProjects)
     }
     const editProject = (project) => {
         return fetch(`http://localhost:8088/projects/${project.id}`, {
@@ -61,8 +59,7 @@ export const ProjectProvider = (props) => {
             .then(setCategories)
     }
 
-    //DONT FORGET TO COMMENT OUT WHAT THIS IS DOING????
-    //can access items in children of "props" whatever
+    //can access items from fetch calls in children of "props"
     return (
         <ProjectContext.Provider value={{
             projects, getProjects, getProjectsByUserId, addProject, getCategories, categories, deleteProject, getProjectById, editProject
@@ -71,6 +68,4 @@ export const ProjectProvider = (props) => {
         </ProjectContext.Provider>
     )
 }
-
-// http://localhost:8088/projectsMaterials?_expand=material&_expand=project
 
