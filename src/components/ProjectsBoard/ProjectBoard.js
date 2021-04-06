@@ -47,7 +47,7 @@ export const ProjectBoard = () => {
                         }
                     </Form.Control>
                 </div>
-                <CardDeck>
+                <CardDeck className="projectCards">
                     {
                         filteredProjects.map(project => {
                             return <ProjectCard key={project.id}

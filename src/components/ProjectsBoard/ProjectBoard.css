@@ -9,6 +9,12 @@
     margin-bottom: 3em;
     margin-top: .5em;
 }
+.projectCards{
+    display: flex;
+    flex-direction: row;
+    flex-wrap:wrap;
+    margin-bottom: 5%;
+}
 .projectForm{
     margin:1% 15% 0% 15%;
 }

@@ -31,7 +31,6 @@ export const ProjectEdit = () => {
     }
 
     const handleClickUpdateProject = (event) => {
-        console.log("test")
         event.preventDefault()
         editProject(project)
             .then(history.push("/projects"))

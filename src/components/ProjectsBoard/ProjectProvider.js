@@ -43,7 +43,8 @@ export const ProjectProvider = (props) => {
             },
             body: JSON.stringify(project)
         })
-            .then(response => response.json())                              
+            .then(response => response.json())   
+            .then(getProjects)                           
     }
 
     const deleteProject = (projectId) => {
