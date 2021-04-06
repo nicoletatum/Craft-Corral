@@ -1,5 +1,4 @@
 import { useState, createContext } from "react"
-
 //context provides a way to pass data through components tree w/o having to pass props DOWN manually at every level
 export const ProjectMaterialContext = createContext()
 
@@ -8,23 +7,17 @@ export const ProjectMaterialProvider = (props) => {
     //useState stores data about projectsMaterials and setProjectsMaterials
     const [projectsMaterials, setProjectsMaterials] = useState([])
 
-    //fetches Ms and Ps that "match" project-material's P and M ids
-    //then the fetched data is parsed to produce JS object(to be legible to ??)
-    //then PM is updated 
     const getProjectsMaterials = () => {
         return fetch("http://localhost:8088/projectsMaterials?_expand=material&_expand=project")
         .then(res => res.json())
         .then(setProjectsMaterials)
     }
 
-    //^see above comments + grabs id, uses string interpolation to grab PM based on id passed in
     const getProjectMaterialById = (id) => {
         return fetch(`http://localhost:8088/projectsMaterials/${id}`)
             .then(res => res.json())
     }
 
-    //addprojectmaterial. to add all of the materials to project materials 
-    //wil check for material id and project id ?? old comment???
     const addProjectMaterial = projectMaterialObj => {
         return fetch("http://localhost:8088/projectsMaterials",{
         method: "POST",

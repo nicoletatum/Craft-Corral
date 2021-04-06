@@ -1,22 +1,13 @@
 {
   "projects": [
     {
-      "id": 1,
-      "name": "Penguin Man",
-      "description": "I work at 21c hotels and we have penguins we move around. I thought it would be funny to make one that turned into a person and put it in the employee stairwell.",
       "userId": 1,
-      "categoryId": 1,
-      "dateCreated": "01/01/2021",
-      "dateDue": "05/01/2021"
-    },
-    {
-      "id": 3,
-      "userId": 1,
-      "name": "dog door ",
-      "categoryId": 5,
-      "description": "rosie dog door",
-      "dateCreated": "3/28/2021, 1:55:19 PM",
-      "dateDue": "2021-03-31T13:56"
+      "name": "draw a flower",
+      "categoryId": 2,
+      "description": "flower drawing",
+      "dateCreated": "4/6/2021, 10:31:47 AM",
+      "dateDue": "2021-04-09T10:32",
+      "id": 8
     }
   ],
   "users": [
@@ -126,14 +117,9 @@
       "id": 11
     },
     {
-      "name": "test",
+      "name": "electric tape",
       "userId": 1,
       "id": 12
-    },
-    {
-      "name": "paint ",
-      "userId": 1,
-      "id": 13
     }
   ],
   "tools": [
@@ -188,83 +174,53 @@
       "userId": 1
     },
     {
-      "name": "cheese",
+      "name": "computer",
+      "userId": 1,
+      "id": 11
+    },
+    {
+      "name": "glue",
+      "userId": 1,
+      "id": 12
+    },
+    {
+      "name": "wire cutter",
+      "userId": 1,
+      "id": 13
+    },
+    {
+      "name": "notepad",
+      "userId": 1,
+      "id": 14
+    },
+    {
+      "name": "chicken wire",
       "userId": 1,
       "id": 15
     },
     {
-      "name": "rubber duck",
+      "name": "tape",
       "userId": 1,
       "id": 16
     },
     {
-      "name": "test",
+      "name": "pencil",
       "userId": 1,
       "id": 17
-    },
-    {
-      "name": "paintbrush",
-      "userId": 1,
-      "id": 18
-    },
-    {
-      "name": "level",
-      "userId": 1,
-      "id": 19
     }
   ],
   "projectsMaterials": [
     {
-      "projectId": 1,
-      "materialId": 2,
-      "id": 1
-    },
-    {
-      "projectId": 1,
-      "materialId": 4,
-      "id": 2
-    },
-    {
-      "projectId": 3,
-      "materialId": 3,
-      "id": 4
-    },
-    {
-      "projectId": 3,
-      "materialId": 10,
-      "id": 5
-    },
-    {
-      "projectId": 3,
-      "materialId": 8,
-      "id": 6
+      "projectId": 8,
+      "materialId": 9,
+      "id": 24
     }
   ],
   "projectsTools": [
     {
-      "projectId": 1,
-      "toolId": 3,
-      "id": 1
-    },
-    {
-      "projectId": 1,
-      "toolId": 4,
-      "id": 2
-    },
-    {
-      "projectId": 3,
-      "toolId": 1,
-      "id": 4
-    },
-    {
-      "projectId": 3,
-      "toolId": 4,
-      "id": 5
-    },
-    {
-      "projectId": 3,
-      "toolId": 19,
-      "id": 6
+      "projectId": 8,
+      "toolId": 17,
+      "id": 17
     }
   ]
 }

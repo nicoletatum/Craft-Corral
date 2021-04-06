@@ -1,31 +1,32 @@
 import React, { useContext, useEffect, useState } from "react"
 import { useHistory } from 'react-router-dom';
-import { ProjectContext } from "./ProjectProvider"
 import { userStorageKey } from "../auth/authSettings"
-import { ToolContext } from "../Tools/ToolProvider"
+import { ProjectContext } from "./ProjectProvider"
 import { MaterialContext } from "../Materials/MaterialProvider"
-import { Form, Button, Jumbotron, Modal } from "react-bootstrap";
+import { ProjectMaterialContext } from "../Materials/MaterialProjectProvider";
+import { ToolContext } from "../Tools/ToolProvider"
+import { ProjectToolContext } from "../Tools/ToolProjectProvider";
 import { Multiselect } from 'multiselect-react-dropdown'
 import "./ProjectBoard.css"
-import { ProjectMaterialContext } from "../Materials/MaterialProjectProvider";
-import { ProjectToolContext } from "../Tools/ToolProjectProvider";
+import { Form, Button, Jumbotron, Modal, Container } from "react-bootstrap";
 
 export const CreateProject = () => {
     //allows us to access components through tree 
     const { addProject, getCategories, categories } = useContext(ProjectContext)
     const { getTools, tools, addTool } = useContext(ToolContext)
     const { getMaterials, materials, addMaterial } = useContext(MaterialContext)
-    const { addProjectMaterial, projectsMaterials } = useContext(ProjectMaterialContext)
-    const { addProjectTool, projectsTools } = useContext(ProjectToolContext)
+    const { addProjectMaterial } = useContext(ProjectMaterialContext)
+    const { addProjectTool } = useContext(ProjectToolContext)
 
     let currentUser = parseInt(sessionStorage.getItem(userStorageKey))
     const timestamp = new Date().toLocaleString()
     const history = useHistory();
 
+        //data is stored, accessible, malleabele w/ state
     const [selectedMaterials, setSelectedMaterials] = useState([])
     const [selectedTools, setSelectedTools] = useState([])
 
-    //storing data about project
+    // creating object/storing data about project, tool, material
     const [project, setProject] = useState({
         "userId": currentUser,
         "name": "",
@@ -34,22 +35,10 @@ export const CreateProject = () => {
         "dateCreated": timestamp,
         "dateDue": ""
     })
-
-    const [projectsTool, setProjectTool] = useState({
-        "projectId": 0,
-        "toolId": 0
-    })
-
     const [tool, setTool] = useState({
         "name": "",
         "userId": currentUser
     })
-
-    const [projectsMaterial, setProjectMaterial] = useState({
-        "projectId": 0,
-        "materialId": 0
-    })
-
     const [material, setMaterial] = useState({
         "name": "",
         "userId": currentUser
@@ -65,14 +54,12 @@ export const CreateProject = () => {
         newProject[event.target.id] = selectedVal
         setProject(newProject)
     }
-
     const handleControlledInputTool = (event) => {
         const newTool = { ...tool }
         let selectedVal = event.target.value
         newTool[event.target.id] = selectedVal
         setTool(newTool)
     }
-
     const handleControlledInputMaterial = (event) => {
         const newMaterial = { ...material }
         let selectedVal = event.target.value
@@ -80,24 +67,24 @@ export const CreateProject = () => {
         setMaterial(newMaterial)
     }
 
+
+    //"saves" tools/materials(selectedItem) temporarily in lil select box
     const handleMultiSelectTools = (selectedList, selectedItem) => {
         const newSelectedTools = selectedTools.slice()
         newSelectedTools.push(selectedItem)
         setSelectedTools(selectedList)
-        console.log(selectedTools, "selectedTools")
     }
-
     const handleMultiSelectMaterials = (selectedList, selectedItem) => {
         const newSelectedMaterials = selectedMaterials.slice()
         newSelectedMaterials.push(selectedItem)
         setSelectedMaterials(selectedList)
     }
 
+//saves projects, materials/tools(jointable mess.. I mean.. fun!)
     const handleClickSaveProject = (event) => {
         event.preventDefault()
         addProject(project)
         .then(response => {
-            console.log("response", response)
             selectedMaterials.map(material => {
             const newProjectMaterial = {
                 projectId: response.id,
@@ -105,7 +92,6 @@ export const CreateProject = () => {
             }
             addProjectMaterial(newProjectMaterial)
         })
-        console.log(selectedTools, "selectedTools in save")
         selectedTools.map(tool => {
             const newProjectTool = {
                 projectId: response.id,
@@ -117,13 +103,12 @@ export const CreateProject = () => {
     })
     }
 
-
+    //saves created tools/materials from modal. on save also closes modal
     const handleClickSaveTool = (event) => {
         event.preventDefault()
         addTool(tool)
         setShowTool(false);
     }
-
     const handleClickSaveMaterial = (event) => {
         event.preventDefault()
         addMaterial(material)
@@ -134,11 +119,11 @@ export const CreateProject = () => {
     const handleCloseTool = () => setShowTool(false);
     const handleShowTool = () => setShowTool(true);
 
-
     const [showMaterial, setShowMaterial] = useState(false);
     const handleCloseMaterial = () => setShowMaterial(false);
     const handleShowMaterial = () => setShowMaterial(true);
 
+    //renders materials, categories, tools
     //"lifecycle" of component. (helps run and get data for variable)
     useEffect(() => {
         getTools()
@@ -148,6 +133,7 @@ export const CreateProject = () => {
 
     return (
         <>
+        <Container className="projectContainer">
             <Jumbotron className="projectsTitle"> <h3>Project Form</h3> </Jumbotron>
             <Form className="projectForm">
                 <Form.Group>
@@ -169,17 +155,18 @@ export const CreateProject = () => {
                 </Form.Group>
                 <Form.Group>
                     <Form.Label id="project.tools"> Tools needed: </Form.Label>
-                    <Multiselect
+                    <Multiselect 
                         options={tools} // Options to display in the dropdown
                         selectedValues={tools.selectedValue} // Preselected value to persist in dropdown
                         onSelect={handleMultiSelectTools} // Function will trigger on select event
                         onRemove={tools.onRemove} // Function will trigger on remove event
                         displayValue="name" // Property name to display in the dropdown options
+                        // className="MS"
                     />
                 </Form.Group>
                 <div className="cantFind">
                     <p className="cantFindText">Can't find tool?</p>
-                    <Button onClick={handleShowTool}>add tool</Button>
+                    <Button onClick={handleShowTool} className="formButton btn-outline-dark">add tool</Button>
                     <Modal show={showTool} onHide={handleCloseTool}>
                         <Modal.Header closeButton>
                             <Modal.Title>Add Tool</Modal.Title>
@@ -191,7 +178,7 @@ export const CreateProject = () => {
                             </Form>
                         </Modal.Body>
                         <Modal.Footer>
-                            <Button variant="primary" onClick={handleClickSaveTool}>
+                            <Button onClick={handleClickSaveTool} className="formButton btn-outline-dark">
                                 Save
                             </Button>
                         </Modal.Footer>
@@ -200,17 +187,18 @@ export const CreateProject = () => {
                 <Form.Group>
                     <Form.Label id="project.materials"> Materials needed: </Form.Label>
                     <Multiselect
-                        options={materials} // Options to display in the dropdown
-                        selectedValues={materials.selectedValue} // Preselected value to persist in dropdown
-                        onSelect={handleMultiSelectMaterials} // Function will trigger on select event
-                        onRemove={materials.onRemove} // Function will trigger on remove event
-                        displayValue="name" // Property name to display in the dropdown options
+                        options={materials}
+                        selectedValues={materials.selectedValue}
+                        onSelect={handleMultiSelectMaterials} 
+                        onRemove={materials.onRemove} 
+                        displayValue="name" 
+                        // className="MS"
                     />
 
                 </Form.Group>
                 <div className="cantFind">
                     <p className="cantFindText"> Can't find material?</p>
-                    <Button onClick={handleShowMaterial}>add material</Button>
+                    <Button onClick={handleShowMaterial} className="formButton btn-outline-dark">add material</Button>
                     <Modal show={showMaterial} onHide={handleCloseMaterial}>
                         <Modal.Header closeButton>
                             <Modal.Title>Add Material</Modal.Title>
@@ -222,7 +210,7 @@ export const CreateProject = () => {
                             </Form>
                         </Modal.Body>
                         <Modal.Footer>
-                            <Button variant="primary" onClick={handleClickSaveMaterial}>
+                            <Button variant="primary" onClick={handleClickSaveMaterial} className="formButton btn-outline-dark">
                                 Save
                             </Button>
                         </Modal.Footer>
@@ -232,8 +220,9 @@ export const CreateProject = () => {
                     <Form.Label id="project.dateDue"> Date Due: </Form.Label>
                     <Form.Control type="datetime-local" id="dateDue" onChange={handleControlledInputChange} />
                 </Form.Group>
-                <Button onClick={handleClickSaveProject}> Save Project </Button>
+                <Button onClick={handleClickSaveProject} className="formButton btn-outline-dark"> Save Project </Button>
             </Form>
+            </Container>
         </>
     )
 }

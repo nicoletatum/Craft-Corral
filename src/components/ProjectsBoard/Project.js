@@ -1,24 +1,20 @@
-import React, { useContext, useState, useEffect } from "react"
+import React, { useContext, useEffect } from "react"
+import { useHistory } from "react-router-dom"
 import { ProjectContext } from "./ProjectProvider.js"
 import{ ProjectMaterialContext } from "../Materials/MaterialProjectProvider"
-import { MaterialContext } from "../Materials/MaterialProvider"
-import Button from 'react-bootstrap/Button'
-import Card from 'react-bootstrap/Card'
-import Container from 'react-bootstrap/Container'
-import { useHistory } from "react-router-dom"
 import { ProjectToolContext } from "../Tools/ToolProjectProvider.js"
-// import "./Project.css"
+import {Button, Card, Container} from 'react-bootstrap'
+import "./ProjectBoard.css"
 
 export const ProjectCard = ({ project }) => {
     
+    //creates a global state for data passing through components(allows me to access data)
     const { deleteProject } = useContext(ProjectContext)
     const { getProjectsMaterials, projectsMaterials } = useContext(ProjectMaterialContext)
     const { getProjectsTools, projectsTools } = useContext(ProjectToolContext)
-    // const { materials, getMaterials } = useContext(MaterialContext)
 
     //gives an object with methods on it. then goes back "through history" to new url
     const history = useHistory()
-
     const handleDelete = () => {
         deleteProject(project.id)
             .then(() => {
@@ -26,37 +22,38 @@ export const ProjectCard = ({ project }) => {
             })
     }  
 
-    //.then callback parenthesis look into 
+    //renders tools and materials for projects 
     useEffect(() => {
         getProjectsMaterials()
         .then(getProjectsTools)
-        // .then(getMaterials())
     }, [])
     
     return (
         <Card className="ProjectCard">
-            <Card.Title className="projectName">{project.name}</Card.Title>
-            <div className="projectDescription">Description: {project.description}</div>
-            <div className="projectcategory">Category: {project.category?.name}</div>
-            <div className="projectTools">Tools Needed: 
+            <Card.Title className="projectName"><strong>{project.name}</strong></Card.Title>
+            <div className="projectDescription"><b>Description: </b>{project.description}</div>
+            <div className="projectcategory"><b>Category: </b>{project.category?.name}</div>
+            <div className="projectTools">
+                <b>Tools Needed: </b>
             { 
                     projectsTools.map(pt => {
                         if (pt.projectId === project.id) 
-                        return <div key={pt.id}> {pt.tool.name} </div>}
+                        return <div key={pt.id} className="TN">{pt.tool.name}</div>}
                         )
             }
             </div>
-            <div className="projectsMaterials">Materials Needed: 
+            <div className="projectsMaterials">
+                <b>Materials Needed: </b>
             { 
                     projectsMaterials.map(pm => {
                         if (pm.projectId === project.id) 
-                        return <div key={pm.id}> {pm.material.name} </div>}
+                        return <div key={pm.id} className="PN"> {pm.material.name} </div>}
                         )
             }
             </div>
-            <div className="projectCreationDate">Date Started: {project.dateCreated}</div>
-            <div className="projectCompletionDate">Complete by: {project.dateDue}</div>
-            <Container>
+            <div className="projectCreationDate"> <b>Date Started:</b> {project.dateCreated}</div>
+            <div className="projectCompletionDate"><b>Complete by:</b> {project.dateDue}</div>
+            <Container className="edButtons">
             <Button onClick={() => {
                 history.push(`/projects/edit/${project.id}`)
                 }}

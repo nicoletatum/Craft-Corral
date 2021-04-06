@@ -1,5 +1,4 @@
 import { useState, createContext } from "react"
-
 //context provides a way to pass data through components tree w/o having to pass props DOWN manually at every level
 export const ProjectToolContext = createContext()
 
@@ -30,7 +29,6 @@ export const ProjectToolProvider = (props) => {
             .then(getProjectsTools)
     }
 
-    //DONT FORGET TO COMMENT OUT WHAT THIS IS DOING????
     return (
         <ProjectToolContext.Provider value={{
             projectsTools, getProjectsTools, addProjectTool, getProjectToolById

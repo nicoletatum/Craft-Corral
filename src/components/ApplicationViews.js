@@ -12,7 +12,6 @@ import { ProjectToolProvider } from "./Tools/ToolProjectProvider"
 export const ApplicationViews = () => {
     return (
         <>
-            {/* <p>test application views</p> */}
             <Route exact path="/">
                 <Home />
             </Route>

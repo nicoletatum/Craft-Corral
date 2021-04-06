@@ -1,5 +1,10 @@
 .crusty{
-    display:flex;
-    max-width: 70%;
+    max-width: 50%;
     padding:1em;
 }
+
+/* .welcome{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+} */

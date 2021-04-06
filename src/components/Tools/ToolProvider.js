@@ -13,12 +13,6 @@ export const ToolProvider = (props) => {
         .then(response => response.json())
         .then(setTools)
     }
-
-    // const getToollById = (id) => {
-        //     return fetch(`http://localhost:8088/Tools/${id}`)
-        //         .then(res => res.json())
-        // }
-        
         const addTool = toolObj => {
             return fetch("http://localhost:8088/tools",{
                 method: "POST",
@@ -33,7 +27,7 @@ export const ToolProvider = (props) => {
         const useTools = () => {
             return tools.slice
         }
-    //DONT FORGET TO COMMENT OUT WHAT THIS IS DOING????
+        
     return (
         <ToolContext.Provider value={{
             tools, getTools, addTool, useTools
