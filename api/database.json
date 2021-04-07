@@ -2,12 +2,30 @@
   "projects": [
     {
       "userId": 1,
-      "name": "draw a flower",
-      "categoryId": 2,
-      "description": "flower drawing",
-      "dateCreated": "4/6/2021, 10:31:47 AM",
-      "dateDue": "2021-04-09T10:32",
-      "id": 8
+      "name": "Mask",
+      "categoryId": 4,
+      "description": "sew a spring mask! maybe with a floral pattern",
+      "dateCreated": "4/7/2021, 1:29:24 PM",
+      "dateDue": "2021-04-09T13:30",
+      "id": 9
+    },
+    {
+      "userId": 1,
+      "name": "Rewire Kiln",
+      "categoryId": 3,
+      "description": "An old kiln I got at an estate sale that I need to rewire bc I don't trust the old wires. Honestly not sure about how to go about this. Need to do more research. ",
+      "dateCreated": "4/7/2021, 1:30:30 PM",
+      "dateDue": "2021-04-17T12:30",
+      "id": 10
+    },
+    {
+      "userId": 1,
+      "name": "Bart Simpson Mask",
+      "categoryId": 1,
+      "description": "paper mache mask of Bart just for fun",
+      "dateCreated": "4/7/2021, 1:38:04 PM",
+      "dateDue": "2021-06-12T16:44",
+      "id": 11
     }
   ],
   "users": [
@@ -120,6 +138,36 @@
       "name": "electric tape",
       "userId": 1,
       "id": 12
+    },
+    {
+      "name": "floral wire",
+      "userId": 1,
+      "id": 13
+    },
+    {
+      "name": "elastic string",
+      "userId": 1,
+      "id": 14
+    },
+    {
+      "name": "wires",
+      "userId": 1,
+      "id": 15
+    },
+    {
+      "name": "wire plug",
+      "userId": 1,
+      "id": 16
+    },
+    {
+      "name": "TBD",
+      "userId": 1,
+      "id": 17
+    },
+    {
+      "name": "paint ",
+      "userId": 1,
+      "id": 18
     }
   ],
   "tools": [
@@ -207,20 +255,130 @@
       "name": "pencil",
       "userId": 1,
       "id": 17
+    },
+    {
+      "name": "sewing machine",
+      "userId": 1,
+      "id": 18
+    },
+    {
+      "name": "wire cutter",
+      "userId": 1,
+      "id": 19
+    },
+    {
+      "name": "electrical tape",
+      "userId": 1,
+      "id": 20
+    },
+    {
+      "name": "pliers",
+      "userId": 1,
+      "id": 21
+    },
+    {
+      "name": "paint brush",
+      "userId": 1,
+      "id": 22
     }
   ],
   "projectsMaterials": [
     {
-      "projectId": 8,
+      "projectId": 9,
+      "materialId": 1,
+      "id": 25
+    },
+    {
+      "projectId": 9,
+      "materialId": 2,
+      "id": 26
+    },
+    {
+      "projectId": 9,
+      "materialId": 14,
+      "id": 27
+    },
+    {
+      "projectId": 9,
+      "materialId": 13,
+      "id": 28
+    },
+    {
+      "projectId": 10,
+      "materialId": 15,
+      "id": 29
+    },
+    {
+      "projectId": 10,
+      "materialId": 16,
+      "id": 30
+    },
+    {
+      "projectId": 10,
+      "materialId": 12,
+      "id": 31
+    },
+    {
+      "projectId": 10,
+      "materialId": 17,
+      "id": 32
+    },
+    {
+      "projectId": 11,
+      "materialId": 5,
+      "id": 33
+    },
+    {
+      "projectId": 11,
       "materialId": 9,
-      "id": 24
+      "id": 34
+    },
+    {
+      "projectId": 11,
+      "materialId": 8,
+      "id": 35
+    },
+    {
+      "projectId": 11,
+      "materialId": 6,
+      "id": 36
+    },
+    {
+      "projectId": 11,
+      "materialId": 18,
+      "id": 37
     }
   ],
   "projectsTools": [
     {
-      "projectId": 8,
+      "projectId": 9,
+      "toolId": 18,
+      "id": 18
+    },
+    {
+      "projectId": 9,
+      "toolId": 8,
+      "id": 19
+    },
+    {
+      "projectId": 10,
+      "toolId": 19,
+      "id": 20
+    },
+    {
+      "projectId": 10,
+      "toolId": 21,
+      "id": 21
+    },
+    {
+      "projectId": 11,
       "toolId": 17,
-      "id": 17
+      "id": 22
+    },
+    {
+      "projectId": 11,
+      "toolId": 22,
+      "id": 23
     }
   ]
 }
