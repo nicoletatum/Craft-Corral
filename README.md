@@ -5,7 +5,13 @@
 # Tech used
 -HTML, CSS, React JS, Bootstrap
 -crusty was made with thispersondoesnotexist.com and then edited with pixlr(E)
+
 # Screenshots 
+![ProjectBoard](screencaps/ProjectBoard.png)
+![AddProject](screencaps/addProjectDemo.png)
+
+# ERD
 ![ERD](screencaps/ERD.png)
+
 # Accessibility 
 
